@@ -54,11 +54,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
                 $email = $booking['email'];
                 $type = $booking['type'];
                 $booking_date = $booking['booking_date'];
-                $booking_time = $booking['booking_time'];
+                $time_start = $booking['time_start'];
 
                 // Insert the booking into the test2 table with the updated ID
-                $sqlInsert = "INSERT INTO test2 (id, name, phone_number, email, type, booking_date, booking_time) 
-                              VALUES ($newId, '$name', '$phone_number', '$email', '$type', '$booking_date', '$booking_time')";
+                $sqlInsert = "INSERT INTO test2 (id, name, phone_number, email, type, booking_date, time_start) 
+                              VALUES ($newId, '$name', '$phone_number', '$email', '$type', '$booking_date', '$time_start')";
                 mysqli_query($conn, $sqlInsert);
 
                 $newId++; // Increment the new ID for the next booking

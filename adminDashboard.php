@@ -268,10 +268,12 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             <th><strong>ID</strong></th>
             <th><strong>Nama</strong></th>
             <th><strong>Nombor Telefon</strong></th>
-            <th><strong>Catatan</strong></th>
+            <th><strong>Mesyuarat/Majlis</strong></th>
             <th><strong>Bilik/Dewan</strong></th>
             <th><strong>Tarikh Tempahan</strong></th>
-            <th><strong>Masa Tempahan</strong></th>
+            <th><strong>Masa Mula</strong></th>
+            <th><strong>Masa Tamat</strong></th>
+            <th><strong>Dokumen Sokongan</strong></th>
             <th><strong>Status</strong></th>
             <th><strong>Tindakan</strong></th>
         </tr>
@@ -297,13 +299,16 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
         // Loop through the results and display them in the table
         while ($row = mysqli_fetch_assoc($result)) {
+            
+            $status = $row['status'];
+            $rowClass = $status === 'Approved' ? 'approved-row' : ''; // Add the class 'approve-row' for "Approved" status
+
             // // Add the data-id attribute to each row
             echo "<tr data-id='" . $row['id'] . "'>"; // Add the data-id attribute to each row
-            $status = $row['status'];
-            $rowClass = $status === 'approve' ? 'approve-row' : ''; // Add the class 'approve-row' for "approve" status
 
 
             // Rest of the code remains the same...
+            
             
             echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
@@ -312,14 +317,23 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             echo "<td>" . $row['type'] . "</td>";
             echo "<td>" . $row['booking_date'] . "</td>";
 
-            // Convert booking_time to 12-hour format
-            $booking_time_24h = $row['booking_time'];
-            $booking_time_12h = date("h:i A", strtotime($booking_time_24h));
+            // Convert time_start to 12-hour format
+            $time_start_24h = $row['time_start'];
+            $time_start_12h = date("h:i A", strtotime($time_start_24h));
 
             // Display the booking time in 12-hour format
-            echo "<td>" . $booking_time_12h . "</td>";
+            echo "<td>" . $time_start_12h . "</td>";
 
-            echo "<td>" . $row['status'] . "</td>";
+            // Convert time_start to 12-hour format
+            $time_end_24h = $row['time_end'];
+            $time_end_12h = date("h:i A", strtotime($time_end_24h));
+
+            // Display the booking time in 12-hour format
+            echo "<td>" . $time_end_12h . "</td>";
+
+            echo "<td>" . $row['id'] . "</td>";
+
+            echo "<td class='status-cell'>" . $row['status'] . "</td>";
 
             echo "<td>";
             echo "<button onclick=\"openEditBookingModal(" . $row['id'] . ")\">Edit</button>";
@@ -339,6 +353,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 </div>
 
                             <button onclick="showBookingForm()">Create Booking</button>
+                            <button onclick="approveBooking(this, <?php echo $row['id']; ?>)">Approve</button>
                         </div>
                     </div>
                 </main>
@@ -356,6 +371,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                 </footer>
             </div>
         </div>
+        
 
         <!-- Booking Form Modal -->
 	<div id="booking-modal" class="modal">
@@ -363,7 +379,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
       <span class="close" onclick="hideBookingModal()">&times;</span>
       <h2>Booking Form</h2>
       <center>
-      <form action="insert.php" method="post" onsubmit="submitBookingForm(event)"> <!-- Updated action attribute -->
+      <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
           <p>
             <label for="Name">Nama:</label>
@@ -400,11 +416,23 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
           </p>
 
           <p>
-          <label for="booking_time">Masa Tempahan:</label>
-          <input type="time" name="booking_time" id="booking_time">
+          <label for="time_start">Masa Mula:</label>
+          <input type="time" name="time_start" id="time_start">
         </p>
 
-          <input type="submit" value="Submit">
+        <p>
+          <label for="time_end">Masa Tamat:</label>
+          <input type="time" name="time_end" id="time_end">
+        </p>
+
+        <p>
+
+        <label for="upload">&nbsp;&nbsp;&nbsp;Dokumen Sokongan:</label>
+        <input type="file" name="upload" id="upload">
+        </p>
+
+
+        <input type="submit" value="Submit">
         </form>     
 	    </center>
     </div>
@@ -440,14 +468,14 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 			<input type="date" name="booking_date" id="edit-booking_date" required>
 		</p>
 
-        <p>
+        <!-- <p>
 			<label for="edit-booking_date">Tarikh Tempahan:</label>
 			<input type="date" name="booking_date" id="datepicker" required>
-		</p>
+		</p> -->
 
 		<p>
-			<label for="edit-booking_time">Masa Tempahan:</label>
-			<input type="time" name="booking_time" id="edit-booking_time" required>
+			<label for="edit-time_start">Masa Tempahan:</label>
+			<input type="time" name="time_start" id="edit-time_start" required>
 		</p>
 		<p>
 			<input type="submit" value="Update Booking">

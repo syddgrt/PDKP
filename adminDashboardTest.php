@@ -58,12 +58,12 @@
 		echo "<td>" . $row['type'] . "</td>";
 		echo "<td>" . $row['booking_date'] . "</td>";
 
-		// Convert booking_time to 12-hour format
-		$booking_time_24h = $row['booking_time'];
-		$booking_time_12h = date("h:i A", strtotime($booking_time_24h));
+		// Convert time_start to 12-hour format
+		$time_start_24h = $row['time_start'];
+		$time_start_12h = date("h:i A", strtotime($time_start_24h));
 
 		// Display the booking time in 12-hour format
-		echo "<td>" . $booking_time_12h . "</td>";
+		echo "<td>" . $time_start_12h . "</td>";
 
 		echo "<td>";
 		echo "<button onclick=\"openEditBookingModal(" . $row['id'] . ")\">Edit</button>";
@@ -124,8 +124,8 @@
           </p>
 
           <p>
-          <label for="booking_time">Masa Tempahan:</label>
-          <input type="time" name="booking_time" id="booking_time">
+          <label for="time_start">Masa Tempahan:</label>
+          <input type="time" name="time_start" id="time_start">
         </p>
 
           <input type="submit" value="Submit">
@@ -164,8 +164,8 @@
 			<input type="date" name="booking_date" id="edit-booking_date" required>
 		</p>
 		<p>
-			<label for="edit-booking_time">Masa Tempahan:</label>
-			<input type="time" name="booking_time" id="edit-booking_time" required>
+			<label for="edit-time_start">Masa Tempahan:</label>
+			<input type="time" name="time_start" id="edit-time_start" required>
 		</p>
 		<p>
 			<input type="submit" value="Update Booking">

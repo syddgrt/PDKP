@@ -120,8 +120,8 @@
           </p>
 
           <p>
-          <label for="booking_time">Masa Tempahan:</label>
-          <input type="time" name="booking_time" id="booking_time">
+          <label for="time_start">Masa Tempahan:</label>
+          <input type="time" name="time_start" id="time_start">
         </p>
 
           <input type="submit" value="Submit">

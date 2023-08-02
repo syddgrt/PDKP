@@ -31,10 +31,10 @@ if (isset($_GET['id'])) {
 			$updatedEmail = $_POST['email'];
 			$updatedType = $_POST['type'];
 			$updatedBookingDate = $_POST['booking_date'];
-			$updatedBookingTime = $_POST['booking_time'];
+			$updatedBookingTime = $_POST['time_start'];
 
 			// Perform the update query
-			$updateSql = "UPDATE test2 SET name = '$updatedName', phone_number = '$updatedPhoneNumber', email = '$updatedEmail', type = '$updatedType', booking_date = '$updatedBookingDate', booking_time = '$updatedBookingTime' WHERE id = '$bookingId'";
+			$updateSql = "UPDATE test2 SET name = '$updatedName', phone_number = '$updatedPhoneNumber', email = '$updatedEmail', type = '$updatedType', booking_date = '$updatedBookingDate', time_start = '$updatedBookingTime' WHERE id = '$bookingId'";
 			if (mysqli_query($conn, $updateSql)) {
 				// Display a success message and redirect to the viewBookings page
 				echo '<script>alert("Booking has been updated."); window.location.href = "adminDashboard.php";</script>';
@@ -77,8 +77,8 @@ if (isset($_GET['id'])) {
 					<input type="date" name="booking_date" id="booking_date" value="<?php echo $row['booking_date']; ?>" required>
 				</p>
 				<p>
-					<label for="booking_time">Masa Tempahan:</label>
-					<input type="time" name="booking_time" id="booking_time" value="<?php echo $row['booking_time']; ?>" required>
+					<label for="time_start">Masa Tempahan:</label>
+					<input type="time" name="time_start" id="time_start" value="<?php echo $row['time_start']; ?>" required>
 				</p>
 				<p>
 					<input type="submit" value="Update Booking">
