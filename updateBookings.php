@@ -20,29 +20,27 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         isset($_POST['email']) &&
         isset($_POST['type']) &&
         isset($_POST['booking_date']) &&
-        isset($_POST['booking_time']) &&
-        isset($_POST['status'])
+        isset($_POST['time_start']) &&
+        isset($_POST['time_end']) &&
+        isset($_POST['upload'])
     ) {
         // Retrieve the form data
-        $data = json_decode(file_get_contents('php://input'), true);
         $bookingId = $_POST['id'];
         $name = $_POST['name'];
         $phone_number = $_POST['phone_number'];
         $email = $_POST['email'];
         $type = $_POST['type'];
         $booking_date = $_POST['booking_date'];
-        $booking_time = $_POST['booking_time'];
-        $booking_time = $_POST['status'];
+        $time_start = $_POST['time_start'];
+        $time_start = $_POST['time_end'];
+        $upload = $_POST['upload'];
 
         // Prepare the update statement using prepared statements
-        $sql = "UPDATE test2 SET name = ?, phone_number = ?, email = ?, type = ?, booking_date = ?, booking_time = ? WHERE id = ?";
+        $sql = "UPDATE test2 SET name = ?, phone_number = ?, email = ?, type = ?, booking_date = ?, time_start = ?, time_end = ?, upload = ? WHERE id = ?";
         $stmt = mysqli_prepare($conn, $sql);
 
         // Bind parameters to the prepared statement
-        mysqli_stmt_bind_param($stmt, "sssssssi", $name, $phone_number, $email, $type, $booking_date, $booking_time, $bookingId, $status);
-
-       
-        
+        mysqli_stmt_bind_param($stmt, "ssssssi", $name, $phone_number, $email, $type, $booking_date, $time_start, $time_end, $upload, $bookingId);
 
         // Execute the update statement
         if (mysqli_stmt_execute($stmt)) {

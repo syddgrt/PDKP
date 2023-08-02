@@ -27,13 +27,17 @@
         $email = $_REQUEST['email'];
         $type = $_REQUEST['type'];
         $booking_date = $_REQUEST['booking_date'];
-        $booking_time = $_REQUEST['booking_time'];
+        $time_start = $_REQUEST['time_start'];
+        $time_end = $_REQUEST['time_end'];
+        $upload = $_REQUEST['upload'];
 
-        $status = isset($_POST['status']) && !empty($_POST['status']) ? $_POST['status'] : 'pending';
+        $status = isset($_POST['status']) && !empty($_POST['status']) ? $_POST['status'] : 'Pending';
+
+        $upload = isset($_FILES['upload']) ? $_FILES['upload']['name'] : '';
 
 
         // Check if the booking is already occupied for the same date and type
-        $check_sql = "SELECT * FROM test2 WHERE booking_date = '$booking_date' AND type = '$type' AND booking_time ='$booking_time'";
+        $check_sql = "SELECT * FROM test2 WHERE booking_date = '$booking_date' AND type = '$type' AND time_start ='$time_start' AND time_end ='$time_end'";
         $check_result = mysqli_query($conn, $check_sql);
 
         if (mysqli_num_rows($check_result) > 0) {
@@ -43,8 +47,8 @@
             exit(); // Exit to stop further processing
         } else {
             // Check if there is any booking with the same date and type within a 3-hour buffer
-            $bufferTime = date('H:i:s', strtotime($booking_time . ' -3 hours'));
-            $bufferQuery = "SELECT * FROM test2 WHERE type='$type' AND booking_date='$booking_date' AND booking_time > '$bufferTime'";
+            $bufferTime = date('H:i:s', strtotime($time_start . ' -3 hours'));
+            $bufferQuery = "SELECT * FROM test2 WHERE type='$type' AND booking_date='$booking_date' AND time_start > '$bufferTime'";
             $bufferResult = mysqli_query($conn, $bufferQuery);
             if (mysqli_num_rows($bufferResult) > 0) {
                 // Slot is too close to an existing booking, display error message
@@ -53,13 +57,15 @@
                 exit(); // Exit to stop further processing
             } else {
                 // Insert the new booking into the database
-                $insertQuery = "INSERT INTO test2 (name, phone_number, email, type, booking_date, booking_time, status) VALUES ('$name', '$phone_number', '$email', '$type', '$booking_date', '$booking_time','$status')";
+                $insertQuery = "INSERT INTO test2 (name, phone_number, email, type, booking_date, time_start, time_end, upload, status) VALUES ('$name', '$phone_number', '$email', '$type', '$booking_date', '$time_start','$time_end', '$upload','$status')";
                 echo "Name: " . $name . "<br>";
                 echo "Phone Number: " . $phone_number . "<br>";
                 echo "Email: " . $email . "<br>";
                 echo "Type: " . $type . "<br>";
                 echo "Booking Date: " . $booking_date . "<br>";
-                echo "Booking Time: " . $booking_time . "<br>";
+                echo "Time Start: " . $time_start . "<br>";
+                echo "Time End: " . $time_end . "<br>";
+                echo "Upload: " . $upload . "<br>";
                 echo "Status: " . $status . "<br>";
 
                 if (mysqli_query($conn, $insertQuery)) {

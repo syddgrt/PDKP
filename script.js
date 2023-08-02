@@ -46,9 +46,10 @@ function hideBookingModal() {
   document.getElementById('email').value = '';
   document.getElementById('type').value = '';
   document.getElementById('booking_date').value = '';
-  document.getElementById('booking_time').value = '';
+  document.getElementById('time_start').value = '';
+  document.getElementById('time_end').value = '';
+  document.getElementById('upload').value = '';
 }
-
 
 function submitBookingForm(event) {
   console.log("Form submission triggered!"); // Add this line to check if the function is called
@@ -59,16 +60,21 @@ function submitBookingForm(event) {
   var email = document.getElementById('email').value;
   var type = document.getElementById('type').value;
   var booking_date = document.getElementById('booking_date').value;
-  var booking_time = document.getElementById('booking_time').value;
+  var time_start = document.getElementById('time_start').value;
+  var time_end = document.getElementById('time_end').value;
+  var uploadInput = document.getElementById('upload');
+  var uploadFile = uploadInput.files[0]; // Get the selected file
 
-  // Create a new FormData object and append the form data
+  // Create a new FormData object and append the form datadada
   var formData = new FormData();
   formData.append('name', name);
   formData.append('phone_number', phone_number);
   formData.append('email', email);
   formData.append('type', type);
   formData.append('booking_date', booking_date);
-  formData.append('booking_time', booking_time);
+  formData.append('time_start', time_start);
+  formData.append('time_end', time_end);
+  formData.append('upload', uploadFile); // Append the fileaad
 
   // Perform the AJAX request to insert.php
   fetch('insert.php', {
@@ -104,7 +110,9 @@ function submitBookingForm(event) {
         document.getElementById('email').value = '';
         document.getElementById('type').value = '';
         document.getElementById('booking_date').value = '';
-        document.getElementById('booking_time').value = '';
+        document.getElementById('time_start').value = '';
+        document.getElementById('time_end').value = '';
+        document.getElementById('upload').value = '';
 
         // Hide the booking modal (you need to implement this function)
         hideBookingModal();
@@ -118,6 +126,76 @@ function submitBookingForm(event) {
       console.error('Error submitting booking data:', error);
     });
 }
+
+
+function submitEditBookingForm() {
+  console.log("Submit Edit Booking Form called"); // Add this line to check if the function is called
+  event.preventDefault();
+
+  // Get the form data
+  var bookingId = document.getElementById('edit-booking-id').value;
+  var name = document.getElementById('edit-name').value;
+  var phone_number = document.getElementById('edit-phone_number').value;
+  var email = document.getElementById('edit-email').value;
+  var type = document.getElementById('edit-type').value;
+  var booking_date = document.getElementById('edit-booking_date').value;
+  var time_start = document.getElementById('edit-time_start').value;
+  var time_end = document.getElementById('edit-time_end').value;
+  var upload = document.getElementById('edit-upload').value;
+
+  // Log the data to check if it's correct
+  console.log("Booking ID:", bookingId);
+  console.log("Name:", name);
+  console.log("Phone Number:", phone_number);
+  console.log("Email:", email);
+  console.log("Type:", type);
+  console.log("Booking Date:", booking_date);
+  console.log("Time Start:", time_start);
+  console.log("Time End:", time_end);
+  console.log("Upload:", upload);
+  
+
+  // Perform any necessary validation and processing of the form data
+
+  // Submit the form using AJAX to update the booking
+  // Assuming you have a separate PHP script to update the booking details
+  var formData = new URLSearchParams();
+  formData.append('id', bookingId);
+  formData.append('name', name);
+  formData.append('phone_number', phone_number);
+  formData.append('email', email);
+  formData.append('type', type);
+  formData.append('booking_date', booking_date);
+  formData.append('time_start', time_start);
+  formData.append('time_end', time_end);
+  formData.append('upload', upload);
+
+  fetch('updateBookings.php', {
+    method: 'POST',
+    body: formData,
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded'
+    }
+  })
+    .then(response => response.text())
+    .then(data => {
+      // Display a success message or handle errors if needed
+      console.log('Booking updated successfully:', data);
+
+      // Close the "Edit Booking" modal
+      closeEditBookingModal();
+
+      // Display a prompt indicating successful booking update
+      alert('Booking updated successfully!');
+
+      // Reload the page to display the updated table
+      location.reload();
+    })
+    .catch(error => {
+      console.error('Error updating booking:', error);
+    });
+}
+
 
 
 
@@ -244,7 +322,7 @@ function openEditBookingModal(bookingId) {
       document.getElementById('edit-email').value = data.email;
       document.getElementById('edit-type').value = data.type;
       document.getElementById('edit-booking_date').value = data.booking_date;
-      document.getElementById('edit-booking_time').value = data.booking_time;
+      document.getElementById('edit-time_start').value = data.time_start;
 
       // Show the "Edit Booking" modal
       document.getElementById('edit-booking-modal').style.display = 'block';
@@ -271,7 +349,7 @@ function openEditBookingModal(bookingId) {
     var email = document.getElementById('edit-email').value;
     var type = document.getElementById('edit-type').value;
     var booking_date = document.getElementById('edit-booking_date').value;
-    var booking_time = document.getElementById('edit-booking_time').value;
+    var time_start = document.getElementById('edit-time_start').value;
   
     // Log the data to check if it's correct
     console.log("Booking ID:", bookingId);
@@ -280,7 +358,8 @@ function openEditBookingModal(bookingId) {
     console.log("Email:", email);
     console.log("Type:", type);
     console.log("Booking Date:", booking_date);
-    console.log("Booking Time:", booking_time);
+    console.log("Time Start:", time_start);
+    console.log("Time Start:", time_end);
   
 
     // Perform any necessary validation and processing of the form data
@@ -297,7 +376,9 @@ function openEditBookingModal(bookingId) {
         email: email,
         type: type,
         booking_date: booking_date,
-        booking_time: booking_time
+        time_start: time_start,
+        time_end: time_end
+        
       })
     })
       .then(response => response.text())
@@ -333,7 +414,8 @@ function updateTableData(bookingId) {
         tableRow.cells[2].innerText = data.email;
         tableRow.cells[3].innerText = data.type;
         tableRow.cells[4].innerText = data.booking_date;
-        tableRow.cells[4].innerText = data.booking_time;
+        tableRow.cells[4].innerText = data.time_start;
+        tableRow.cells[5].innerText = data.time_end;
       }
     })
     .catch(error => {
@@ -378,49 +460,73 @@ function goBack() {
   history.back();
 }
 
-function approveBooking(button, bookingId) {
-  console.log('Booking ID:', bookingId); // Check if the correct bookingId is received
-  console.log('Type of Booking ID:', typeof bookingId); // Check the data type of bookingId
+// function approveBooking(button, bookingId) {
+//   console.log('Booking ID:', bookingId); // Check if the correct bookingId is received
+//   console.log('Type of Booking ID:', typeof bookingId); // Check the data type of bookingId
 
   
 
-  // Find the parent row element of the button (the <tr> element)
-  const row = button.closest('tr');
+//   // Find the parent row element of the button (the <tr> element)
+//   const row = button.closest('tr');
 
-  // Check if the row is found before proceeding
-  if (row) {
-    row.classList.add('approved-row');
+//   // Check if the row is found before proceeding
+//   if (row) {
+//     row.classList.add('approved-row');
 
-    // Perform other actions related to approving the booking (e.g., updating in the database)
-    // ...
+//     // Perform other actions related to approving the booking (e.g., updating in the database)
+//     // ...
 
-    // You can display a success message here if needed
-    alert('Booking approved successfully!');
-  } else {
-    // If the row is not found, display an error message
-    alert('Error: Booking ID not found!');
-  }
-}
+//     // You can display a success message here if needed
+//     alert('Booking approved successfully!');
+//   } else {
+//     // If the row is not found, display an error message
+//     alert('Error: Booking ID not found!');
+//   }
+// }
 
 
-function handleApproveButtonClick(bookingId) {
-  // Send an AJAX request to update the status in the database
-  fetch('update_status.php', {
+function approveBooking(button, bookingId) {
+  // Disable the button to prevent multiple clicks during processing
+  button.disabled = true;
+
+  // Send an AJAX request to update the booking status to "approve"
+  fetch('updateStatus.php', {
     method: 'POST',
-    body: JSON.stringify({ bookingId, status: 'approve' }),
+    body: new URLSearchParams({ id: bookingId, status: 'Approved' }),
     headers: {
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/x-www-form-urlencoded'
     }
   })
-    .then(response => response.json())
-    .then(data => {
-      // Handle the response if needed
-      console.log(data);
-      // Refresh the booking table to show the updated status and green color
-      loadBookings();
-    })
-    .catch(error => {
-      console.error('Error updating status:', error);
-    });
+  .then(response => response.text())
+  .then(data => {
+    // Display a success message or handle errors if needed
+    console.log('Booking approved:', data);
+
+    // Update the status column in the table to "Approved"
+    var row = button.closest('tr');
+    var statusCell = row.querySelector('.status-cell');
+    // statusCell.textContent = 'Approved';
+  })
+
+  .catch(error => {
+    console.error('Error approving booking:', error);
+  })
+  .finally(() => {
+    // Re-enable the button after the request is completed
+    button.disabled = false;
+  });
+  // Reload the page to display the updated table
+  location.reload(true)
 }
+
+
+function highlightApprovedRows() {
+  const rows = document.querySelectorAll('tr.approved-row');
+  rows.forEach((row) => {
+    row.classList.add('approved-row');
+  });
+}
+
+// Call the function when the page loads
+window.addEventListener('load', highlightApprovedRows);
 

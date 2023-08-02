@@ -56,13 +56,21 @@
                 echo "<td>" . $row['email'] . "</td>";
                 echo "<td>" . $row['type'] . "</td>";
                 echo "<td>" . $row['booking_date'] . "</td>";
-                // Convert booking_time to 12-hour format
-                $booking_time_24h = $row['booking_time'];
-                $booking_time_12h = date("h:i A", strtotime($booking_time_24h));
+                // Convert time_start to 12-hour format
+                $time_start_24h = $row['time_start'];
+                $time_start_12h = date("h:i A", strtotime($time_start_24h));
 
                 // Display the booking time in 12-hour format
-                echo "<td>" . $booking_time_12h . "</td>";
+                echo "<td>" . $time_start_12h . "</td>";
+
+                // Convert time_start to 12-hour format
+                $time_end_24h = $row['time_end'];
+                $time_end_12h = date("h:i A", strtotime($time_end_24h));
+
+                // Display the booking time in 12-hour format
+                echo "<td>" . $time_end_12h . "</td>";
                 echo "<td>" . $row['status'] . "</td>";
+                
                 
 
                 

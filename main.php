@@ -144,11 +144,11 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
           </p>
 
           <p>
-          <label for="booking_time">Masa Tempahan:</label>
-          <input type="time" name="booking_time" id="booking_time">
+          <label for="time_start">Masa Tempahan:</label>
+          <input type="time" name="time_start" id="time_start">
         </p>
         <p>
-        <input type="hidden" id="status" name="status" value="pending">     
+        <input type="hidden" id="status" name="status" value="Pending">     
 
 
         </p>
