@@ -315,7 +315,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             echo "<td>" . $row['phone_number'] . "</td>";
             echo "<td>" . $row['email'] . "</td>";
             echo "<td>" . $row['type'] . "</td>";
-            echo "<td>" . $row['booking_date'] . "</td>";
+            echo "<td>" . date('d-m-Y', strtotime($row['booking_date'])) . "</td>";
 
             // Convert time_start to 12-hour format
             $time_start_24h = $row['time_start'];
@@ -377,7 +377,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 	<div id="booking-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="hideBookingModal()">&times;</span>
-      <h2>Booking Form</h2>
+      <h2>Borang Tempahan</h2>
       <center>
       <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
@@ -441,45 +441,46 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
 	<!-- Edit Booking Modal -->
 	<div id="edit-booking-modal" class="modal" style="display: none;">
-	<div class="modal-content">
+	<div class="modal-content-admin">
 		<span class="close" onclick="closeEditBookingModal()">&times;</span>
-		<h2>Edit Booking</h2>
+		<h2>Kemaskini tempahan</h2>
 		<form onsubmit="submitEditBookingForm(); return false;">
-		<!-- Hidden input to store the booking ID for submission -->
-		<input type="hidden" id="edit-booking-id" value="">
-		<p>
-			<label for="edit-name">Nama:</label>
-			<input type="text" name="name" id="edit-name" required>
-		</p>
-		<p>
-			<label for="edit-phone_number">Nombor Telefon:</label>
-			<input type="text" name="phone_number" id="edit-phone_number" required>
-		</p>
-		<p>
-			<label for="edit-email">Emel:</label>
-			<input type="text" name="email" id="edit-email" required>
-		</p>
-		<p>
-			<label for="edit-type">Bilik/Dewan:</label>
-			<input type="text" name="type" id="edit-type" required>
-		</p>
-		<p>
-			<label for="edit-booking_date">Tarikh Tempahan:</label>
-			<input type="date" name="booking_date" id="edit-booking_date" required>
-		</p>
+            <!-- Hidden input to store the booking ID for submission -->
+            <input type="hidden" id="edit-booking-id" value="">
+            <div class="form-group">
+                <label for="edit-name">Nama:</label>
+                <input type="name" name="name" id="edit-name" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-phone_number">Nombor Telefon:</label>
+                <input type="phone_number" name="phone_number" id="edit-phone_number" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-email">Mesyuarat/Majlis/Acara:</label>
+                <input type="text" name="email" id="edit-email" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-email">Agensi:</label>
+                <input type="text" name="email" id="edit-email" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-type">Bilik/Dewan:</label>
+                <input type="type" name="type" id="edit-type" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-booking_date">Tarikh Tempahan:</label>
+                <input type="date" name="booking_date" id="edit-booking_date" required>
+            </div>
 
-        <!-- <p>
-			<label for="edit-booking_date">Tarikh Tempahan:</label>
-			<input type="date" name="booking_date" id="datepicker" required>
-		</p> -->
-
-		<p>
-			<label for="edit-time_start">Masa Tempahan:</label>
-			<input type="time" name="time_start" id="edit-time_start" required>
-		</p>
-		<p>
-			<input type="submit" value="Update Booking">
-		</p>
+            <div class="form-group">
+                <label for="edit-time_start">Masa Mula:</label>
+                <input type="time" name="time_start" id="edit-time_start" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-time_end">Masa Tamat:</label>
+                <input type="time" name="time_end" id="edit-time_end" required>
+            </div>
+            <input type="submit" value="Update Booking">
 		</form>
 	</div>                        
 
