@@ -81,7 +81,7 @@
   <div id="booking-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="hideBookingModal()">&times;</span>
-      <h2>Form Tempahan</h2>
+      <h2>Borang Tempahan</h2>
       <center>
       <form action="insert.php" method="post" onsubmit="submitBookingForm(event)"> <!-- Updated action attribute -->
           

@@ -54,36 +54,40 @@ if (isset($_GET['id'])) {
 		</head>
 		<body>
 			<h1>Edit Booking</h1>
-			<form action="" method="post">
-				<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
-				<p>
-					<label for="name">Nama:</label>
-					<input type="text" name="name" id="name" value="<?php echo $row['name']; ?>" required>
-				</p>
-				<p>
-					<label for="phone_number">Nombor Telefon:</label>
-					<input type="text" name="phone_number" id="phone_number" value="<?php echo $row['phone_number']; ?>" required>
-				</p>
-				<p>
-					<label for="email">Emel:</label>
-					<input type="text" name="email" id="email" value="<?php echo $row['email']; ?>" required>
-				</p>
-				<p>
-					<label for="type">Bilik/Dewan:</label>
-					<input type="text" name="type" id="type" value="<?php echo $row['type']; ?>" required>
-				</p>
-				<p>
-					<label for="booking_date">Tarikh Tempahan:</label>
-					<input type="date" name="booking_date" id="booking_date" value="<?php echo $row['booking_date']; ?>" required>
-				</p>
-				<p>
-					<label for="time_start">Masa Tempahan:</label>
-					<input type="time" name="time_start" id="time_start" value="<?php echo $row['time_start']; ?>" required>
-				</p>
-				<p>
-					<input type="submit" value="Update Booking">
-				</p>
-			</form>
+			<div id="booking-modal" class="modal">
+				<div class="modal-content">
+					<form action="" method="post">
+						<input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+						<div class="form-group">
+							<label for="name">Nama:</label>
+							<input type="name" name="name" id="name" value="<?php echo $row['name']; ?>" required>
+						</div>
+						<div class="form-group">
+							<label for="phone_number">Nombor Telefon:</label>
+							<input type="phone_number" name="phone_number" id="phone_number" value="<?php echo $row['phone_number']; ?>" required>
+						</div>
+						<div class="form-group">
+							<label for="email">Emel:</label>
+							<input type="email" name="email" id="email" value="<?php echo $row['email']; ?>" required>
+						</p>
+						<p>
+							<label for="type">Bilik/Dewan:</label>
+							<input type="type" name="type" id="type" value="<?php echo $row['type']; ?>" required>
+						</p>
+						<p>
+							<label for="booking_date">Tarikh Tempahan:</label>
+							<input type="date" name="booking_date" id="booking_date" value="<?php echo $row['booking_date']; ?>" required>
+						</p>
+						<p>
+							<label for="time_start">Masa Tempahan:</label>
+							<input type="time" name="time_start" id="time_start" value="<?php echo $row['time_start']; ?>" required>
+						</p>
+						<p>
+							<input type="submit" value="Update Booking">
+						</p>
+					</form>
+				</div>
+			</div>
 		</body>
 		</html>
 		<?php

@@ -101,60 +101,65 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
     </header>
     <!-- END head -->
 
-  <!-- Booking Form Modal -->
   <div id="booking-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="hideBookingModal()">&times;</span>
-      <h2>Booking Form</h2>
+      <h2>Borang Tempahan</h2>
       <center>
-      <form action="insert.php" method="post" onsubmit="submitBookingForm(event)"> <!-- Updated action attribute -->
+      <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
-          <p>
+          <div class="form-group">
             <label for="Name">Nama:</label>
             <input type="text" name="name" id="name">
-          </p>
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="phoneNumber">Nombor Telefon:</label>
             <input type="text" name="phone_number" id="phone_number">
-          </p>
+          </div>
 
-          <p>
+          <div class="form-group">
             <label for="emailAddress">Catatan:</label>
             <input type="text" name="email" id="email">
-          </p>
+            </div>
 
-          <p>
-              <label for="type">Bilik/Dewan:</label>
-              <select name="type" id="type">
-                <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
-                <option value="Dewan Serbaguna">Dewan Serbaguna</option>
-                <option value="Dewan Kodiang">Dewan Kodiang</option>
-                <option value="Bilik Gerakan">Bilik Gerakan</option>
-                <option value="Bilik Mesyuarat Pembangunan">Bilik Mesyuarat Pembangunan</option>
-                <option value="Bilik NGO">Bilik NGO</option>
-              </select>
-            </p>
+          <div class="form-group">
+            <label for="type">Bilik/Dewan:</label>
+            <select name="type" id="type">
+              <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
+              <option value="Dewan Serbaguna">Dewan Serbaguna</option>
+              <option value="Dewan Kodiang">Dewan Kodiang</option>
+              <option value="Bilik Gerakan">Bilik Gerakan</option>
+              <option value="Bilik Mesyuarat Pembangunan">Bilik Mesyuarat Pembangunan</option>
+              <option value="Bilik NGO">Bilik NGO</option>
+            </select>
+          </div>
             
 
 
-          <p>
+          <div class="form-group">
             <label for="booking_date">Tarikh Tempahan:</label>
-            <input type="date" name="booking_date" id="booking_date">
-          </p>
+            <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>">
+          </div>
 
-          <p>
-          <label for="time_start">Masa Tempahan:</label>
-          <input type="time" name="time_start" id="time_start">
-        </p>
-        <p>
-        <input type="hidden" id="status" name="status" value="Pending">     
+          <div class="form-group">
+            <label for="time_start">Masa Mula:</label>
+            <input type="time" name="time_start" id="time_start">
+          </div>
+
+          <div class="form-group">
+            <label for="time_end">Masa Tamat:</label>
+            <input type="time" name="time_end" id="time_end">
+          </div>
+
+        <div class="form-group">
+
+          <label for="upload">&nbsp;&nbsp;&nbsp;Dokumen Sokongan:&nbsp;&nbsp;&nbsp;</label>
+          <input type="file" name="upload" id="upload">
+        </div>
 
 
-        </p>
-
-        
-          <input type="submit" value="Submit">
+        <input type="submit" value="Submit">
         </form>     
 	    </center>
     </div>
@@ -166,15 +171,15 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
       <span class="close" onclick="hideAdminLoginModal()">&times;</span>
       <h2>Admin Login</h2>
       <form action="login.php" method="post"> <!-- Add the form element with action="login.php" -->
-        <p>
+        <div class="form-group">
           <label for="username">Username:</label>
-          <input type="text" name="username" id="username">
-        </p>
+          <input type="username" name="username" id="username">
+        </div>
 
-        <p>
+        <div class="form-group">
           <label for="password">Password:</label>
           <input type="password" name="password" id="password">
-        </p>
+        </div>
 
         <input type="submit" value="Submit">
       </form>

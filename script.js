@@ -90,7 +90,20 @@ function submitBookingForm(event) {
         // Booking failed, display error message
         return response.text().then(error => {
           console.error('Error submitting booking data:', error);
-          alert("Booking failed. Please choose a different time");
+          var errorMessage = "Booking failed. Please try again.";
+
+          // Handle specific error cases and update errorMessage accordingly
+          if (error.includes("Time Start and Time End cannot be the same.")) {
+            errorMessage = "Masa Mula dan Masa Tamat tidak boleh sama";
+          } else if (error.includes("There must be at least a 1-hour gap between Time Start and Time End.")) {
+            errorMessage = "Sewaan minimum adalah 1 jam";
+          } else if (error.includes("Slot is too close to an existing booking.")) {
+            errorMessage = "Slot tersebut sudah ditempah";
+          } else if (error.includes("Time end must be later than time start")) {
+            errorMessage = "Masa Mula mestilah sebelum masa Tamat";
+          }
+
+          alert(errorMessage); // Show the appropriate error message
           exit(); // Exit to stop further processing
         });
       }
