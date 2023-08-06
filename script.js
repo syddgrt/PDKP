@@ -141,8 +141,10 @@ function submitBookingForm(event) {
 }
 
 
+var formData = new URLSearchParams();
+
 function submitEditBookingForm() {
-  console.log("Submit Edit Booking Form called"); // Add this line to check if the function is called
+  console.log("Submit Edit Booking Form called");
   event.preventDefault();
 
   // Get the form data
@@ -154,6 +156,7 @@ function submitEditBookingForm() {
   var booking_date = document.getElementById('edit-booking_date').value;
   var time_start = document.getElementById('edit-time_start').value;
   var time_end = document.getElementById('edit-time_end').value;
+  var status = document.getElementById('edit-status').value;
   var upload = document.getElementById('edit-upload').value;
 
   // Log the data to check if it's correct
@@ -165,14 +168,14 @@ function submitEditBookingForm() {
   console.log("Booking Date:", booking_date);
   console.log("Time Start:", time_start);
   console.log("Time End:", time_end);
+  console.log("Status:", status);
   console.log("Upload:", upload);
-  
 
   // Perform any necessary validation and processing of the form data
 
   // Submit the form using AJAX to update the booking
   // Assuming you have a separate PHP script to update the booking details
-  var formData = new URLSearchParams();
+  // var formData = new FormData();
   formData.append('id', bookingId);
   formData.append('name', name);
   formData.append('phone_number', phone_number);
@@ -181,6 +184,7 @@ function submitEditBookingForm() {
   formData.append('booking_date', booking_date);
   formData.append('time_start', time_start);
   formData.append('time_end', time_end);
+  formData.append('status', status);
   formData.append('upload', upload);
 
   fetch('updateBookings.php', {
@@ -208,6 +212,7 @@ function submitEditBookingForm() {
       console.error('Error updating booking:', error);
     });
 }
+
 
 
 
@@ -336,9 +341,18 @@ function openEditBookingModal(bookingId) {
       document.getElementById('edit-type').value = data.type;
       document.getElementById('edit-booking_date').value = data.booking_date;
       document.getElementById('edit-time_start').value = data.time_start;
+      document.getElementById('edit-time_end').value = data.time_end;
+      document.getElementById('edit-status').value = data.status;
+      document.getElementById('edit-upload').value = data.upload;
+
+
+      document.getElementById('upload').value = '';
 
       // Show the "Edit Booking" modal
       document.getElementById('edit-booking-modal').style.display = 'block';
+
+      // Remove the booking ID entry from the formData
+      formData.delete('id');
     })
     .catch(error => {
       console.error('Error fetching booking details:', error);
@@ -349,69 +363,70 @@ function openEditBookingModal(bookingId) {
     document.getElementById('edit-booking-modal').style.display = 'none';
   }
 
-  // Function to handle form submission for editing the booking
-  function submitEditBookingForm() {
+  // // Function to handle form submission for editing the booking
+  // function submitEditBookingForm() {
 
-    console.log("Submit Edit Booking Form called"); // Add this line to check if the function is called
-    event.preventDefault(); 
+  //   console.log("Submit Edit Booking Form called"); // Add this line to check if the function is called
+  //   event.preventDefault(); 
 
-    // Get the form data
-    var bookingId = document.getElementById('edit-booking-id').value;
-    var name = document.getElementById('edit-name').value;
-    var phone_number = document.getElementById('edit-phone_number').value;
-    var email = document.getElementById('edit-email').value;
-    var type = document.getElementById('edit-type').value;
-    var booking_date = document.getElementById('edit-booking_date').value;
-    var time_start = document.getElementById('edit-time_start').value;
+  //   // Get the form data
+  //   var bookingId = document.getElementById('edit-booking-id').value;
+  //   var name = document.getElementById('edit-name').value;
+  //   var phone_number = document.getElementById('edit-phone_number').value;
+  //   var email = document.getElementById('edit-email').value;
+  //   var type = document.getElementById('edit-type').value;
+  //   var booking_date = document.getElementById('edit-booking_date').value;
+  //   var time_start = document.getElementById('edit-time_start').value;
+  //   var time_end = document.getElementById('edit-time_end').value;
   
-    // Log the data to check if it's correct
-    console.log("Booking ID:", bookingId);
-    console.log("Name:", name);
-    console.log("Phone Number:", phone_number);
-    console.log("Email:", email);
-    console.log("Type:", type);
-    console.log("Booking Date:", booking_date);
-    console.log("Time Start:", time_start);
-    console.log("Time Start:", time_end);
+  //   // Log the data to check if it's correct
+  //   console.log("Booking ID:", bookingId);
+  //   console.log("Name:", name);
+  //   console.log("Phone Number:", phone_number);
+  //   console.log("Email:", email);
+  //   console.log("Type:", type);
+  //   console.log("Booking Date:", booking_date);
+  //   console.log("Time Start:", time_start);
+  //   console.log("Time Start:", time_end);
   
 
-    // Perform any necessary validation and processing of the form data
+  //   // Perform any necessary validation and processing of the form data
 
-    // Submit the form using AJAX to update the booking
-    // Assuming you have a separate PHP script to update the booking details
-    // Submit the form using AJAX to update the booking
-    fetch('updateBookings.php', {
-      method: 'POST',
-      body: new URLSearchParams({
-        id: bookingId,
-        name: name,
-        phone_number: phone_number,
-        email: email,
-        type: type,
-        booking_date: booking_date,
-        time_start: time_start,
-        time_end: time_end
+  //   // Submit the form using AJAX to update the booking
+  //   // Assuming you have a separate PHP script to update the booking details
+  //   // Submit the form using AJAX to update the booking
+  //   fetch('updateBookings.php', {
+  //     method: 'POST',
+  //     body: new URLSearchParams({
+  //       id: bookingId,
+  //       name: name,
+  //       phone_number: phone_number,
+  //       email: email,
+  //       type: type,
+  //       booking_date: booking_date,
+  //       time_start: time_start,
+  //       time_end: time_end
         
-      })
-    })
-      .then(response => response.text())
-      .then(data => {
-        // Display a success message or handle errors if needed
-        console.log('Booking updated successfully:', data);
+  //     })
+  //   })
+  //     .then(response => response.text())
+  //     .then(data => {
+  //       // Display a success message or handle errors if needed
+  //       console.log('Booking updated successfully:', data);
   
-        // Close the "Edit Booking" modal
-        closeEditBookingModal();
+  //       // Close the "Edit Booking" modal
+  //       closeEditBookingModal();
   
-        // Display a prompt indicating successful booking update
-        alert('Booking updated successfully!');
+  //       // Display a prompt indicating successful booking update
+  //       alert('Booking updated successfully!');
   
-        // Reload the page to display the updated table
-        location.reload();
-      })
-      .catch(error => {
-        console.error('Error updating booking:', error);
-      });
-  }
+  //       // Reload the page to display the updated table
+  //       location.reload();
+  //     })
+  //     .catch(error => {
+  //       console.error('Error updating booking:', error);
+  //     });
+  // }
 
   
 function updateTableData(bookingId) {

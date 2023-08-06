@@ -268,7 +268,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             <th><strong>ID</strong></th>
             <th><strong>Nama</strong></th>
             <th><strong>Nombor Telefon</strong></th>
-            <th><strong>Mesyuarat/Majlis</strong></th>
+            <th><strong>Tujuan</strong></th>
             <th><strong>Bilik/Dewan</strong></th>
             <th><strong>Tarikh Tempahan</strong></th>
             <th><strong>Masa Mula</strong></th>
@@ -340,7 +340,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             echo "<form action='adminDashboard.php' method='post' style='display: inline;' onsubmit=\"return false;\">";
             echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "'>";
             echo "<button onclick=\"deleteBooking(" . $row['id'] . ")\">Delete</button>";
-            echo "<button onclick=\"approveBooking(this, " . $row['id'] . ")\">Approve</button>";
+            // echo "<button onclick=\"approveBooking(this, " . $row['id'] . ")\">Approve</button>";
             echo "</form>";
             echo "</td>";
             echo "</tr>";
@@ -392,7 +392,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
           </p>
 
           <p>
-            <label for="emailAddress">Catatan:</label>
+            <label for="emailAddress">Tujuan:</label>
             <input type="text" name="email" id="email">
           </p>
 
@@ -449,23 +449,30 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             <input type="hidden" id="edit-booking-id" value="">
             <div class="form-group">
                 <label for="edit-name">Nama:</label>
-                <input type="name" name="name" id="edit-name" required>
+                <input type="text" name="name" id="edit-name" required>
             </div>
             <div class="form-group">
                 <label for="edit-phone_number">Nombor Telefon:</label>
-                <input type="phone_number" name="phone_number" id="edit-phone_number" required>
+                <input type="text" name="phone_number" id="edit-phone_number" required>
             </div>
             <div class="form-group">
-                <label for="edit-email">Mesyuarat/Majlis/Acara:</label>
+                <label for="edit-email">Tujuan:</label>
                 <input type="text" name="email" id="edit-email" required>
             </div>
-            <div class="form-group">
+            <!-- <div class="form-group">
                 <label for="edit-email">Agensi:</label>
                 <input type="text" name="email" id="edit-email" required>
-            </div>
+            </div> -->
             <div class="form-group">
-                <label for="edit-type">Bilik/Dewan:</label>
-                <input type="type" name="type" id="edit-type" required>
+                <label for="edit-type">Bilik/Dewan:</label>      
+                    <select name="type" id="edit-type">
+                    <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
+                    <option value="Dewan Serbaguna">Dewan Serbaguna</option>
+                    <option value="Dewan Kodiang">Dewan Kodiang</option>
+                    <option value="Bilik Gerakan">Bilik Gerakan</option>
+                    <option value="Bilik Mesyuarat Pembangunan">Bilik Mesyuarat Pembangunan</option>
+                    <option value="Bilik NGO">Bilik NGO</option>
+                </select>
             </div>
             <div class="form-group">
                 <label for="edit-booking_date">Tarikh Tempahan:</label>
@@ -479,6 +486,18 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             <div class="form-group">
                 <label for="edit-time_end">Masa Tamat:</label>
                 <input type="time" name="time_end" id="edit-time_end" required>
+            </div>
+            <div class="form-group">
+                <label for="edit-status">Status:</label>
+                <select name="text" id="edit-status">
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="edit-upload">&nbsp;&nbsp;&nbsp;Dokumen Sokongan:</label>
+                <input type="file" name="upload" id="edit-upload">
             </div>
             <input type="submit" value="Update Booking">
 		</form>

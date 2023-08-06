@@ -26,7 +26,9 @@
                 <th>Catatan</th>
                 <th>Bilik/Dewan</th>
                 <th>Tarikh Tempahan</th>
-                <th>Masa Tempahan</th>
+                <th>Masa Mula</th>
+                <th>Masa Tamat</th>
+                <th>Status</th>
             </center>
         </tr>
 

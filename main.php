@@ -119,7 +119,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
           </div>
 
           <div class="form-group">
-            <label for="emailAddress">Catatan:</label>
+            <label for="emailAddress">Tujuan:</label>
             <input type="text" name="email" id="email">
             </div>
 
