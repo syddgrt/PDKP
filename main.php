@@ -119,8 +119,8 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
           </div>
 
           <div class="form-group">
-            <label for="emailAddress">Tujuan:</label>
-            <input type="text" name="email" id="email">
+            <label for="notes">Tujuan:</label>
+            <input type="text" name="notes" id="notes">
             </div>
 
           <div class="form-group">
@@ -333,13 +333,13 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
           <div class="col-md-3 mb-5 pr-md-5 contact-info">
             <p><span class="d-block">Address:</span> <span> 98 West 21th Street, Suite 721 New York NY 10016</span></p>
             <p><span class="d-block">Phone:</span> <span> (+1) 435 3533</span></p>
-            <p><span class="d-block">Email:</span> <span> info@yourdomain.com</span></p>
+            <p><span class="d-block">notes:</span> <span> info@yourdomain.com</span></p>
           </div>
           <div class="col-md-3 mb-5">
             <p>Sign up for our newsletter</p>
             <form action="#" class="footer-newsletter">
               <div class="form-group">
-                <input type="email" class="form-control" placeholder="Your email...">
+                <input type="notes" class="form-control" placeholder="Your notes...">
                 <button type="submit" class="btn"><span class="fa fa-paper-plane"></span></button>
               </div>
             </form>
