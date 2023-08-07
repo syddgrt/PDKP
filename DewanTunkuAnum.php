@@ -181,9 +181,9 @@
         <div class="text" data-aos="fade-right" data-aos-delay="200">
           <h2>Kemudahan</h2>
           
-          <p>Berhawa Dingin</p>
-          <p>Pembesar Suara</p>
-          <p>Pembesar Suara dengan basic sound system</p>
+          <h5>Berhawa Dingin</h5>
+          
+          <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
           
           <!-- <p class="mt-5"><a href="#" class="btn btn-primary uppercase">Learn More</a></p> -->
         </div>

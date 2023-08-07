@@ -23,7 +23,8 @@
             <center>
                 <!-- <th>Nama</th>
                 <th>Nombor Telefon</th> -->
-                <th>Catatan</th>
+                <th>Tujuan</th>
+                <th>Jabatan/Agensi</th>
                 <th>Bilik/Dewan</th>
                 <th>Tarikh Tempahan</th>
                 <th>Masa Mula</th>
@@ -55,7 +56,8 @@
                 echo "<tr>";
                 //echo "<td>" . $row['name'] . "</td>";
                 //echo "<td>" . $row['phone_number'] . "</td>";
-                echo "<td>" . $row['email'] . "</td>";
+                echo "<td>" . $row['notes'] . "</td>";
+                echo "<td>" . $row['organization'] . "</td>";
                 echo "<td>" . $row['type'] . "</td>";
                 echo "<td>" . $row['booking_date'] . "</td>";
                 // Convert time_start to 12-hour format

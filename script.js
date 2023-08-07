@@ -43,7 +43,8 @@ function hideBookingModal() {
   // Reset the form fields when hiding the booking modal
   document.getElementById('name').value = '';
   document.getElementById('phone_number').value = '';
-  document.getElementById('email').value = '';
+  document.getElementById('organization').value = '';
+  document.getElementById('notes').value = '';
   document.getElementById('type').value = '';
   document.getElementById('booking_date').value = '';
   document.getElementById('time_start').value = '';
@@ -57,7 +58,8 @@ function submitBookingForm(event) {
 
   var name = document.getElementById('name').value;
   var phone_number = document.getElementById('phone_number').value;
-  var email = document.getElementById('email').value;
+  var organization = document.getElementById('organization').value;
+  var notes = document.getElementById('notes').value;
   var type = document.getElementById('type').value;
   var booking_date = document.getElementById('booking_date').value;
   var time_start = document.getElementById('time_start').value;
@@ -65,16 +67,17 @@ function submitBookingForm(event) {
   var uploadInput = document.getElementById('upload');
   var uploadFile = uploadInput.files[0]; // Get the selected file
 
-  // Create a new FormData object and append the form datadada
+  // Create a new FormData object and append the form data
   var formData = new FormData();
   formData.append('name', name);
   formData.append('phone_number', phone_number);
-  formData.append('email', email);
+  formData.append('organization', organization);
+  formData.append('notes', notes);
   formData.append('type', type);
   formData.append('booking_date', booking_date);
   formData.append('time_start', time_start);
   formData.append('time_end', time_end);
-  formData.append('upload', uploadFile); // Append the fileaad
+  formData.append('upload', uploadFile); // Append the file
 
   // Perform the AJAX request to insert.php
   fetch('insert.php', {
@@ -120,17 +123,15 @@ function submitBookingForm(event) {
         // Reset the form
         document.getElementById('name').value = '';
         document.getElementById('phone_number').value = '';
-        document.getElementById('email').value = '';
+        document.getElementById('organization').value = '';
+        document.getElementById('notes').value = '';       
         document.getElementById('type').value = '';
         document.getElementById('booking_date').value = '';
         document.getElementById('time_start').value = '';
         document.getElementById('time_end').value = '';
         document.getElementById('upload').value = '';
-
-        // Hide the booking modal (you need to implement this function)
-        hideBookingModal();
-
-        // Reload the page to display the updated table
+        
+        // Reload the page to display the updated table (optional, if needed)
         location.reload(true);
       }
     })
@@ -139,6 +140,7 @@ function submitBookingForm(event) {
       console.error('Error submitting booking data:', error);
     });
 }
+
 
 
 var formData = new URLSearchParams();
@@ -151,7 +153,8 @@ function submitEditBookingForm() {
   var bookingId = document.getElementById('edit-booking-id').value;
   var name = document.getElementById('edit-name').value;
   var phone_number = document.getElementById('edit-phone_number').value;
-  var email = document.getElementById('edit-email').value;
+  var notes = document.getElementById('edit-notes').value;
+  var organization = document.getElementById('edit-organization').value;
   var type = document.getElementById('edit-type').value;
   var booking_date = document.getElementById('edit-booking_date').value;
   var time_start = document.getElementById('edit-time_start').value;
@@ -163,7 +166,8 @@ function submitEditBookingForm() {
   console.log("Booking ID:", bookingId);
   console.log("Name:", name);
   console.log("Phone Number:", phone_number);
-  console.log("Email:", email);
+  console.log("Organization:", organization);
+  console.log("notes:", notes);
   console.log("Type:", type);
   console.log("Booking Date:", booking_date);
   console.log("Time Start:", time_start);
@@ -179,7 +183,8 @@ function submitEditBookingForm() {
   formData.append('id', bookingId);
   formData.append('name', name);
   formData.append('phone_number', phone_number);
-  formData.append('email', email);
+  formData.append('organization', organization);
+  formData.append('notes', notes);
   formData.append('type', type);
   formData.append('booking_date', booking_date);
   formData.append('time_start', time_start);
@@ -337,7 +342,7 @@ function openEditBookingModal(bookingId) {
       document.getElementById('edit-booking-id').value = bookingId; // Set the bookingId in the hidden input field
       document.getElementById('edit-name').value = data.name;
       document.getElementById('edit-phone_number').value = data.phone_number;
-      document.getElementById('edit-email').value = data.email;
+      document.getElementById('edit-notes').value = data.notes;
       document.getElementById('edit-type').value = data.type;
       document.getElementById('edit-booking_date').value = data.booking_date;
       document.getElementById('edit-time_start').value = data.time_start;
@@ -373,7 +378,7 @@ function openEditBookingModal(bookingId) {
   //   var bookingId = document.getElementById('edit-booking-id').value;
   //   var name = document.getElementById('edit-name').value;
   //   var phone_number = document.getElementById('edit-phone_number').value;
-  //   var email = document.getElementById('edit-email').value;
+  //   var notes = document.getElementById('edit-notes').value;
   //   var type = document.getElementById('edit-type').value;
   //   var booking_date = document.getElementById('edit-booking_date').value;
   //   var time_start = document.getElementById('edit-time_start').value;
@@ -383,7 +388,7 @@ function openEditBookingModal(bookingId) {
   //   console.log("Booking ID:", bookingId);
   //   console.log("Name:", name);
   //   console.log("Phone Number:", phone_number);
-  //   console.log("Email:", email);
+  //   console.log("notes:", notes);
   //   console.log("Type:", type);
   //   console.log("Booking Date:", booking_date);
   //   console.log("Time Start:", time_start);
@@ -401,7 +406,7 @@ function openEditBookingModal(bookingId) {
   //       id: bookingId,
   //       name: name,
   //       phone_number: phone_number,
-  //       email: email,
+  //       notes: notes,
   //       type: type,
   //       booking_date: booking_date,
   //       time_start: time_start,
@@ -439,7 +444,7 @@ function updateTableData(bookingId) {
       if (tableRow) {
         tableRow.cells[0].innerText = data.name;
         tableRow.cells[1].innerText = data.phone_number;
-        tableRow.cells[2].innerText = data.email;
+        tableRow.cells[2].innerText = data.notes;
         tableRow.cells[3].innerText = data.type;
         tableRow.cells[4].innerText = data.booking_date;
         tableRow.cells[4].innerText = data.time_start;

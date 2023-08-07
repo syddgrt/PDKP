@@ -24,7 +24,8 @@
         // Taking all values from the form data(input)
         $name = $_REQUEST['name'];
         $phone_number = $_REQUEST['phone_number'];
-        $email = $_REQUEST['email'];
+        $organization = $_REQUEST['organization'];
+        $notes = $_REQUEST['notes'];
         $type = $_REQUEST['type'];
         $booking_date = $_REQUEST['booking_date'];
         $time_start = $_REQUEST['time_start'];
@@ -82,10 +83,11 @@
                 exit(); // Exit to stop further processing
             } else {
                 // Insert the new booking into the database
-                $insertQuery = "INSERT INTO test2 (name, phone_number, email, type, booking_date, time_start, time_end, upload, status) VALUES ('$name', '$phone_number', '$email', '$type', '$booking_date', '$time_start','$time_end', '$upload','$status')";
+                $insertQuery = "INSERT INTO test2 (name, phone_number, organization, notes, type, booking_date, time_start, time_end, upload, status) VALUES ('$name', '$phone_number', '$notes', '$organization','$type', '$booking_date', '$time_start','$time_end', '$upload','$status')";
                 echo "Name: " . $name . "<br>";
                 echo "Phone Number: " . $phone_number . "<br>";
-                echo "Email: " . $email . "<br>";
+                echo "Organization: " . $organization . "<br>";
+                echo "notes: " . $notes . "<br>";
                 echo "Type: " . $type . "<br>";
                 echo "Booking Date: " . $booking_date . "<br>";
                 echo "Time Start: " . $time_start . "<br>";

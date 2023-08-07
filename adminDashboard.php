@@ -1,4 +1,6 @@
 <?php
+
+
 // Start the session to check for admin login status
 session_start();
 
@@ -7,6 +9,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     // Redirect to the login page or display an error message
     header("Location: main.php");
     exit();
+    include_once 'updateBookings.php';
 }
 ?>
 
@@ -268,6 +271,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             <th><strong>ID</strong></th>
             <th><strong>Nama</strong></th>
             <th><strong>Nombor Telefon</strong></th>
+            <th><strong>Agensi/Jabatan</strong></th>
             <th><strong>Tujuan</strong></th>
             <th><strong>Bilik/Dewan</strong></th>
             <th><strong>Tarikh Tempahan</strong></th>
@@ -313,7 +317,9 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
             echo "<td>" . $row['id'] . "</td>";
             echo "<td>" . $row['name'] . "</td>";
             echo "<td>" . $row['phone_number'] . "</td>";
-            echo "<td>" . $row['email'] . "</td>";
+            echo "<td>" . $row['organization'] . "</td>";
+            echo "<td>" . $row['notes'] . "</td>";
+            
             echo "<td>" . $row['type'] . "</td>";
             echo "<td>" . date('d-m-Y', strtotime($row['booking_date'])) . "</td>";
 
@@ -382,23 +388,28 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
       <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
           <p>
-            <label for="Name">Nama:</label>
-            <input type="text" name="name" id="name">
+            <label for="Name">Nama*:</label>
+            <input type="text" name="name" id="name" required>
           </p>
 
           <p>
-            <label for="phoneNumber">Nombor Telefon:</label>
-            <input type="text" name="phone_number" id="phone_number">
+            <label for="phoneNumber">Nombor Telefon*:</label>
+            <input type="text" name="phone_number" id="phone_number" required>
           </p>
 
           <p>
-            <label for="emailAddress">Tujuan:</label>
-            <input type="text" name="email" id="email">
+            <label for="organization">Agensi/Jabatan/Persendirian*:</label>
+            <input type="text" name="organization" id="organization" required>
           </p>
 
           <p>
-              <label for="type">Bilik/Dewan:</label>
-              <select name="type" id="type">
+            <label for="notes">Tujuan*:</label>
+            <input type="text" name="notes" id="notes" required>
+          </p>
+
+          <p>
+              <label for="type">Bilik/Dewan*:</label>
+              <select name="type" id="type" required>
                 <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
                 <option value="Dewan Serbaguna">Dewan Serbaguna</option>
                 <option value="Dewan Kodiang">Dewan Kodiang</option>
@@ -411,18 +422,18 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
 
           <p>
-            <label for="booking_date">Tarikh Tempahan:</label>
-            <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>">
+            <label for="booking_date">Tarikh Tempahan*:</label>
+            <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>" required>
           </p>
 
           <p>
-          <label for="time_start">Masa Mula:</label>
-          <input type="time" name="time_start" id="time_start">
+          <label for="time_start">Masa Mula*:</label>
+          <input type="time" name="time_start" id="time_start" required>
         </p>
 
         <p>
-          <label for="time_end">Masa Tamat:</label>
-          <input type="time" name="time_end" id="time_end">
+          <label for="time_end">Masa Tamat*:</label>
+          <input type="time" name="time_end" id="time_end" required>
         </p>
 
         <p>
@@ -455,13 +466,19 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                 <label for="edit-phone_number">Nombor Telefon:</label>
                 <input type="text" name="phone_number" id="edit-phone_number" required>
             </div>
+
             <div class="form-group">
-                <label for="edit-email">Tujuan:</label>
-                <input type="text" name="email" id="edit-email" required>
+                <label for="edit-organization">Agensi/Jabatan/Persendirian:</label>
+                <input type="text" name="organization" id="edit-organization" required>
             </div>
+            <div class="form-group">
+                <label for="edit-notes">Tujuan:</label>
+                <input type="text" name="notes" id="edit-notes" required>
+            </div>
+            
             <!-- <div class="form-group">
-                <label for="edit-email">Agensi:</label>
-                <input type="text" name="email" id="edit-email" required>
+                <label for="edit-notes">Agensi:</label>
+                <input type="text" name="notes" id="edit-notes" required>
             </div> -->
             <div class="form-group">
                 <label for="edit-type">Bilik/Dewan:</label>      
