@@ -59,7 +59,7 @@
                 echo "<td>" . $row['notes'] . "</td>";
                 echo "<td>" . $row['organization'] . "</td>";
                 echo "<td>" . $row['type'] . "</td>";
-                echo "<td>" . $row['booking_date'] . "</td>";
+                echo "<td>" . date('d-m-Y', strtotime($row['booking_date'])) . "</td>";
                 // Convert time_start to 12-hour format
                 $time_start_24h = $row['time_start'];
                 $time_start_12h = date("h:i A", strtotime($time_start_24h));

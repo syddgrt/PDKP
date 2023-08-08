@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
   <head>
-    <title>Bilik Gerakan</title>
+    <title>Bilik Mesyuarat Pembangunan</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -45,10 +45,10 @@
                     <div class="col-md-12">
                       <ul class="list-unstyled menu">
                         <li><a href="main.php">Halaman Utama</a></li>
-                        <li><a href="DewanTunkuAnum.php">Dewan Tunku Anum</a></li>
+                        <li class="active"><a href="DewanTunkuAnum.php">Dewan Tunku Anum</a></li>
                         <li><a href="DewanSerbaguna.php">Dewan Serbaguna</a></li>
                         <li><a href="DewanKodiang.php">Dewan Kodiang</a></li>
-                        <li class="active"><a href="BilikGerakan.php">Bilik Gerakan</a></li>
+                        <li><a href="BilikGerakan.php">Bilik Gerakan</a></li>
                         <li><a href="BilikMesyuaratPembangunan.php">Bilik Mesyuarat Pembangunan</a></li>
                         <li><a href="BilikNGO.php">Bilik NGO</a></li>
                       </ul>
@@ -57,8 +57,8 @@
                       <div class="row">
                         
                         <div class="col-md-6">
-                        <a href="#" class="align-items-center list-unstyled menu btn-outline-light d-sm-inline d-block" onclick="showAdminLoginModal()" >Login Admin</a></p>
-                          <h3>Hubungi Kami</h3>
+                        
+                          <h3>Hubungi Kami</h3><a href="#" class="align-items-center list-unstyled menu btn-outline-light d-sm-inline d-block" onclick="showAdminLoginModal()" >Login Admin</a></p>
                           <ul class="list-unstyled">
                             <li><a href="https://www.facebook.com/pdtkpasu/?locale=ms_MY">Facebook</a></li>
                             <li><a href="https://ptg.kedah.gov.my/pejabat-tanah/kubang-pasu/">Website</a></li>
@@ -81,7 +81,7 @@
   <div id="booking-modal" class="modal">
     <div class="modal-content">
       <span class="close" onclick="hideBookingModal()">&times;</span>
-      <h2>Borang Tempahan</h2>
+      <h2>Form Tempahan</h2>
       <center>
       <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
@@ -142,10 +142,11 @@
 
 
         <input type="submit" value="Submit">
-        </form>  
+        </form>      
 	    </center>
     </div>
   </div>
+
 
    <!-- Admin Login Modal -->
    <div id="admin-login-modal" class="modal">
@@ -172,13 +173,16 @@
       <div class="container">
         <div class="row site-hero-inner justify-content-center align-items-center">
           <div class="col-md-10 text-center">
-            <h1 class="heading" data-aos="fade-up">Bilik Gerakan</h1>
+            <h1 class="heading" data-aos="fade-up">Bilik Mesyuarat Pembangunan</h1>
             <div class="col-md-12 text-center">
             <p class="sub-heading mb-10" data-aos="fade-up" data-aos-delay="100">Kompleks Pentadbiran Kubang Pasu</p>
             <p data-aos="fade-up" data-aos-delay="100">
-            <a href="#" class="btn uppercase btn-primary mr-md-2 mr-0 mb-3 d-sm-inline d-block" onclick="showBookingForm('Bilik Gerakan')">Tempahan</a>
-                        
-            <a href="#" class="btn uppercase btn-outline-light d-sm-inline d-block" onclick="openViewBookings('Bilik Gerakan')">Lihat tempahan</a></p>
+            <a href="#" class="btn uppercase btn-primary mr-md-2 mr-0 mb-3 d-sm-inline d-block" onclick="showBookingForm('Bilik Mesyuarat Pembangunan')">Tempahan</a>
+            
+
+
+            
+            <a href="#" class="btn uppercase btn-outline-light d-sm-inline d-block" onclick="openViewBookings('Bilik Mesyuarat Pembangunan')">Lihat tempahan</a></p>
           </div>
         </div>
           </div>
@@ -194,8 +198,9 @@
         <div class="text" data-aos="fade-right" data-aos-delay="200">
           <h2>Kemudahan</h2>
           
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit aliquid, est reiciendis repellat sapiente consequatur aperiam, ducimus, id minima eligendi officiis, qui expedita sint culpa illum magnam ipsam adipisci possimus? Sit aspernatur eaque id sunt fuga facere hic laudantium, aperiam!</p>
-          <p>Provident dolor aperiam similique maiores quasi. Quo repudiandae fuga commodi itaque dolores accusamus, dolor esse adipisci labore harum blanditiis in totam ipsum vero necessitatibus incidunt reprehenderit, id iste quas, ab, non! Voluptates, reiciendis culpa iure deserunt voluptatum itaque. Quos, soluta.</p>
+          <h5>Berhawa Dingin</h5>
+          
+          <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
           
           <!-- <p class="mt-5"><a href="#" class="btn btn-primary uppercase">Learn More</a></p> -->
         </div>
