@@ -45,8 +45,49 @@
         
 
         $type = $_GET['type'];
+        
+        if (empty($type) || $type === 'all') { // Handle 'all' case
+            $sql = "SELECT * FROM test2";
+            $result = mysqli_query($conn, $sql);
+        
+            echo "<h2>Semua Tempahan</h2>";
 
-        if (!empty($type)) {
+            while ($row = mysqli_fetch_assoc($result)) {
+                echo "<tr>";
+                //echo "<td>" . $row['name'] . "</td>";
+                //echo "<td>" . $row['phone_number'] . "</td>";
+                echo "<td>" . $row['notes'] . "</td>";
+                echo "<td>" . $row['organization'] . "</td>";
+                echo "<td>" . $row['type'] . "</td>";
+                echo "<td>" . $row['booking_date'] . "</td>";
+                // Convert time_start to 12-hour format
+                $time_start_24h = $row['time_start'];
+                $time_start_12h = date("h:i A", strtotime($time_start_24h));
+
+                // Display the booking time in 12-hour format
+                echo "<td>" . $time_start_12h . "</td>";
+
+                // Convert time_start to 12-hour format
+                $time_end_24h = $row['time_end'];
+                $time_end_12h = date("h:i A", strtotime($time_end_24h));
+
+                // Display the booking time in 12-hour format
+                echo "<td>" . $time_end_12h . "</td>";
+                echo "<td>" . $row['status'] . "</td>";
+                
+                
+
+                
+                echo "</tr>";
+            }
+
+
+
+
+
+
+
+        }else if (!empty($type)) {
             $sql = "SELECT * FROM test2 WHERE type='$type'";
             $result = mysqli_query($conn, $sql);
 

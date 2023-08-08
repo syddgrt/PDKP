@@ -194,7 +194,8 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             <h1 class="heading" data-aos="fade-up">Sistem Tempahan Dewan PDKP</h1>
             <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">Kompleks Pentadbiran Kubang Pasu</p>
             <a href="#" class="btn uppercase btn-primary mr-md-2 mr-0 mb-3 d-sm-inline d-block" onclick="showBookingForm()">Tempahan</a>
-            <a href="#" class="btn uppercase btn-outline-light d-sm-inline d-block" onclick="showAdminLoginModal()" >Login Admin</a></p>
+            <a href="#" class="btn uppercase btn-outline-light d-sm-inline d-block" onclick="showAdminLoginModal()" >Login Admin</a>
+            <a href="#" class="btn uppercase btn-outline-light d-sm-inline d-block" onclick="openViewBookings('all')" >Lihat Tempahan</a>
           </div>
         </div>
         <!-- <a href="#" class="scroll-down">Scroll Down</a> -->
@@ -289,22 +290,18 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
     </section>
     <!-- END section -->
 
-    <section class="section slider-section">
+  <section class="section slider-section">
   <div class="container">
-    <div class="row justify-content-center text-center mb-5">
+    
       <div class="col-md-8">
-        <h2 class="heading" data-aos="fade-up">Lokasi</h2>
-        <p class="lead" data-aos="fade-up" data-aos-delay="100">Kompleks Pentadbiran Daerah Kubang Pasu</p>
+        <h5 class="heading" data-aos="fade-right">Lokasi</h5>
+        <p class="lead" data-aos="fade-up" data-aos-delay="300">Kompleks Pentadbiran Daerah Kubang Pasu</p>
       </div>
-    </div>
+    
     
       
-        <!-- Use a wrapper div to center the map -->
-       
-          <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15862.900066700175!2d100.4213878!3d6.2998185!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b580bb6286425%3A0x84dfbee0442ab2ca!2sKompleks%20Pentadbiran%20Daerah%20Kubang%20Pasu!5e0!3m2!1sen!2smy!4v1689667973188!5m2!1sen!2smy" width="100%" height="600" style="border: 2;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-        
-      
-  
+      <!-- Use a wrapper div to center the map -->      
+     <iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15862.900066700175!2d100.4213878!3d6.2998185!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x304b580bb6286425%3A0x84dfbee0442ab2ca!2sKompleks%20Pentadbiran%20Daerah%20Kubang%20Pasu!5e0!3m2!1sen!2smy!4v1689667973188!5m2!1sen!2smy" width="100%" height="600" style="border: 2;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
   </div>
 </section>
 
@@ -347,7 +344,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
         </div>
         <div class="row bordertop pt-5">
           <p class="col-md-6 text-left"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+Copyright &copy;<script>document.write(new Date().getFullYear());</script> Hak Cipta Terpelihara | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
             
           <p class="col-md-6 text-right social">
@@ -368,6 +365,6 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/main.js"></script>
   </body>
             <?php
-  header("Refresh: 0");
+  
   ?>
 </html>

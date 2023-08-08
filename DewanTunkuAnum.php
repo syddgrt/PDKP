@@ -83,26 +83,31 @@
       <span class="close" onclick="hideBookingModal()">&times;</span>
       <h2>Form Tempahan</h2>
       <center>
-      <form action="insert.php" method="post" onsubmit="submitBookingForm(event)"> <!-- Updated action attribute -->
+      <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
           <p>
-            <label for="Name">Nama:</label>
-            <input type="text" name="name" id="name">
+            <label for="Name">Nama*:</label>
+            <input type="text" name="name" id="name" required>
           </p>
 
           <p>
-            <label for="phoneNumber">Nombor Telefon:</label>
-            <input type="text" name="phone_number" id="phone_number">
+            <label for="phoneNumber">Nombor Telefon*:</label>
+            <input type="text" name="phone_number" id="phone_number" required>
           </p>
 
           <p>
-            <label for="emailAddress">Catatan:</label>
-            <input type="text" name="email" id="email">
+            <label for="organization">Agensi/Jabatan/Persendirian*:</label>
+            <input type="text" name="organization" id="organization" required>
           </p>
 
           <p>
-              <label for="type">Bilik/Dewan:</label>
-              <select name="type" id="type">
+            <label for="notes">Tujuan*:</label>
+            <input type="text" name="notes" id="notes" required>
+          </p>
+
+          <p>
+              <label for="type">Bilik/Dewan*:</label>
+              <select name="type" id="type" required>
                 <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
                 <option value="Dewan Serbaguna">Dewan Serbaguna</option>
                 <option value="Dewan Kodiang">Dewan Kodiang</option>
@@ -115,17 +120,29 @@
 
 
           <p>
-            <label for="booking_date">Tarikh Tempahan:</label>
-            <input type="date" name="booking_date" id="booking_date">
+            <label for="booking_date">Tarikh Tempahan*:</label>
+            <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>" required>
           </p>
 
           <p>
-          <label for="time_start">Masa Tempahan:</label>
-          <input type="time" name="time_start" id="time_start">
+          <label for="time_start">Masa Mula*:</label>
+          <input type="time" name="time_start" id="time_start" required>
         </p>
 
-          <input type="submit" value="Submit">
-        </form>     
+        <p>
+          <label for="time_end">Masa Tamat*:</label>
+          <input type="time" name="time_end" id="time_end" required>
+        </p>
+
+        <p>
+
+        <label for="upload">&nbsp;&nbsp;&nbsp;Dokumen Sokongan:</label>
+        <input type="file" name="upload" id="upload">
+        </p>
+
+
+        <input type="submit" value="Submit">
+        </form>      
 	    </center>
     </div>
   </div>

@@ -23,8 +23,11 @@ function hideModal() {
 }
 
 function openViewBookings(type) {
-  console.log("Open View Bookings: " + type);
-  window.location.href = "viewBookings.php?type=" + encodeURIComponent(type);
+  if (type === 'all') {
+    window.location.href = "viewBookings.php?type=all"; // Pass 'all' as the type
+  } else {
+      window.location.href = "viewBookings.php?type=" + encodeURIComponent(type);
+  }
 }
 
 function showBookingForm(type) {

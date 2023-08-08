@@ -121,7 +121,7 @@
 
           <p>
             <label for="booking_date">Tarikh Tempahan*:</label>
-            <input type="date" name="booking_date" id="booking_date" min="<?php echo date('Y-m-d'); ?>" required>
+            <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>" required>
           </p>
 
           <p>
@@ -142,7 +142,7 @@
 
 
         <input type="submit" value="Submit">
-        </form>      
+        </form>  
 	    </center>
     </div>
   </div>
