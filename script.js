@@ -146,18 +146,19 @@ function submitBookingForm(event) {
 
 
 
-var formData = new URLSearchParams();
 
 function submitEditBookingForm() {
   console.log("Submit Edit Booking Form called");
   event.preventDefault();
 
+  var formData = new FormData();
+
   // Get the form data
   var bookingId = document.getElementById('edit-booking-id').value;
   var name = document.getElementById('edit-name').value;
   var phone_number = document.getElementById('edit-phone_number').value;
-  var notes = document.getElementById('edit-notes').value;
   var organization = document.getElementById('edit-organization').value;
+  var notes = document.getElementById('edit-notes').value; 
   var type = document.getElementById('edit-type').value;
   var booking_date = document.getElementById('edit-booking_date').value;
   var time_start = document.getElementById('edit-time_start').value;
@@ -182,7 +183,6 @@ function submitEditBookingForm() {
 
   // Submit the form using AJAX to update the booking
   // Assuming you have a separate PHP script to update the booking details
-  // var formData = new FormData();
   formData.append('id', bookingId);
   formData.append('name', name);
   formData.append('phone_number', phone_number);
@@ -195,32 +195,29 @@ function submitEditBookingForm() {
   formData.append('status', status);
   formData.append('upload', upload);
 
+  
   fetch('updateBookings.php', {
     method: 'POST',
-    body: formData,
-    headers: {
-      'Content-Type': 'application/x-www-form-urlencoded'
-    }
+    body: formData
   })
-    .then(response => response.text())
-    .then(data => {
-      // Display a success message or handle errors if needed
-      console.log('Booking updated successfully:', data);
-
-      // Close the "Edit Booking" modal
-      closeEditBookingModal();
-
-      // Display a prompt indicating successful booking update
-      alert('Booking updated successfully!');
-
-      // Reload the page to display the updated table
-      location.reload();
-    })
-    .catch(error => {
-      console.error('Error updating booking:', error);
-    });
+  .then(response => response.text())
+  .then(data => {
+    // Display a success message or handle errors if needed
+    console.log('Booking updated successfully:', data);
+  
+    // Close the "Edit Booking" modal
+    closeEditBookingModal();
+  
+    // Display a prompt indicating successful booking update
+    alert('Booking updated successfully!');
+  
+    // Reload the page to display the updated table
+    location.reload();
+  })
+  .catch(error => {
+    console.error('Error updating booking:', error);
+  });
 }
-
 
 
 
@@ -345,6 +342,7 @@ function openEditBookingModal(bookingId) {
       document.getElementById('edit-booking-id').value = bookingId; // Set the bookingId in the hidden input field
       document.getElementById('edit-name').value = data.name;
       document.getElementById('edit-phone_number').value = data.phone_number;
+      document.getElementById('edit-organization').value = data.organization;
       document.getElementById('edit-notes').value = data.notes;
       document.getElementById('edit-type').value = data.type;
       document.getElementById('edit-booking_date').value = data.booking_date;
@@ -355,6 +353,8 @@ function openEditBookingModal(bookingId) {
 
 
       document.getElementById('upload').value = '';
+
+      var formData = new FormData();
 
       // Show the "Edit Booking" modal
       document.getElementById('edit-booking-modal').style.display = 'block';

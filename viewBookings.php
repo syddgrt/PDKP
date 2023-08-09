@@ -53,6 +53,11 @@
             echo "<h2>Semua Tempahan</h2>";
 
             while ($row = mysqli_fetch_assoc($result)) {
+
+                $status = $row['status'];
+                $rowClass = $status === 'Approved' ? 'approved-row' : ($status === 'Rejected' ? 'rejected-row' : '');
+                echo "<tr data-id='" . $row['id'] . "' class='$rowClass'>";
+    
                 echo "<tr>";
                 //echo "<td>" . $row['name'] . "</td>";
                 //echo "<td>" . $row['phone_number'] . "</td>";
@@ -73,7 +78,7 @@
 
                 // Display the booking time in 12-hour format
                 echo "<td>" . $time_end_12h . "</td>";
-                echo "<td>" . $row['status'] . "</td>";
+                echo "<td class='status-cell'>" . $row['status'] . "</td>";
                 
                 
 

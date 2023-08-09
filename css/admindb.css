@@ -11244,5 +11244,9 @@ body {
 }
 
 .approved-row {
-  background-color: #c3e6cb !important;
+  background-color: lightgreen; /* Highlight rows with Approved status in green */
+}
+
+.rejected-row {
+  background-color: lightcoral; /* Highlight rows with Rejected status in red */
 }
