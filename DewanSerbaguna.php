@@ -244,22 +244,22 @@
           <div class="col-md-12">
             <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
               <div class="slider-item">
-                <img src="gambarDewan/SliderDewanSerbaguna1.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanSerbaguna/SliderDewanSerbaguna1.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="gambarDewan/SliderDewanSerbaguna2.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanSerbaguna/SliderDewanSerbaguna2.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="gambarDewan/SliderDewanSerbaguna3.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanSerbaguna/SliderDewanSerbaguna3.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-4.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanSerbaguna/SliderDewanSerbaguna4.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-5.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanSerbaguna/SliderDewanSerbaguna5.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-6.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanSerbaguna/SliderDewanSerbaguna6.jpg" alt="Image placeholder" class="img-fluid">
               </div>
             </div>
             <!-- END slider -->
