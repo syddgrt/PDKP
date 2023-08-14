@@ -169,7 +169,7 @@
     </div>
   </div>
   
-    <section class="site-hero overlay page-inside" style="background-image: url(gambarDewan/dewanSerbagunaMain.jpg)">
+    <section class="site-hero overlay page-inside" style="background-image: url(gambarDewan/dewanTunkuAnum/dewanTunkuAnumMain.jpg)">
       <div class="container">
         <div class="row site-hero-inner justify-content-center align-items-center">
           <div class="col-md-10 text-center">
@@ -194,12 +194,16 @@
 
     <section class="bg-light">
       <div class="half d-md-flex d-block">
-        <div class="image" data-aos="fade" style="background-image: url('gambarDewan/dewanSerbagunaMain.jpg');"></div>
+        <div class="image" data-aos="fade" style="background-image: url('gambarDewan/dewanTunkuAnum/dewanTunkuAnum1.jpg');"></div>
         <div class="text" data-aos="fade-right" data-aos-delay="200">
           <h2>Kemudahan</h2>
           
           <h5>Berhawa Dingin</h5>
           
+          <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
+          <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
+          <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
+          <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
           <h5>Pembesar Suara dengan basic sound system (Speaker + Subwoofer)</h5>
           
           <!-- <p class="mt-5"><a href="#" class="btn btn-primary uppercase">Learn More</a></p> -->
@@ -207,7 +211,7 @@
       </div>
 
       <div class="half d-md-flex d-block">
-        <div class="image order-2" data-aos="fade"  style="background-image: url('img/hero_2.jpg');"></div>
+        <div class="image order-2" data-aos="fade"  style="background-image: url('gambarDewan/dewanTunkuAnum/dewanTunkuAnum3.jpg');"></div>
         <div class="text" data-aos="fade-left" data-aos-delay="200">
           <h2>Kadar Harga</h2>
           
@@ -220,12 +224,16 @@
 
       <section class="bg-light">
       <div class="half d-md-flex d-block">
-        <div class="image" data-aos="fade" style="background-image: url('img/hero_1.jpg');"></div>
+        <div class="image" data-aos="fade" style="background-image: url('gambarDewan/dewanTunkuAnum/dewanTunkuAnum2.jpg');"></div>
         <div class="text" data-aos="fade-right" data-aos-delay="200">
           <h2>Hubungi Kami</h2>
+          <h4>04-702 8383 </h4>
+          <h5>(Pejabat Daerah Kubang Pasu)</h5>
+          <h5>04-702 8383</h4>
+          <h5>(Pejabat Tanah Kubang Pasu)</h5>
+          <h4><a href="https://m.facebook.com/profile.php?id=588641034679651">Facebook</a></h4>
+          <p>Facebook PDKP</p>
           
-          <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sit aliquid, est reiciendis repellat sapiente consequatur aperiam, ducimus, id minima eligendi officiis, qui expedita sint culpa illum magnam ipsam adipisci possimus? Sit aspernatur eaque id sunt fuga facere hic laudantium, aperiam!</p>
-          <p>Provident dolor aperiam similique maiores quasi. Quo repudiandae fuga commodi itaque dolores accusamus, dolor esse adipisci labore harum blanditiis in totam ipsum vero necessitatibus incidunt reprehenderit, id iste quas, ab, non! Voluptates, reiciendis culpa iure deserunt voluptatum itaque. Quos, soluta.</p>
           
           
         </div>
@@ -245,22 +253,22 @@
           <div class="col-md-12">
             <div class="home-slider major-caousel owl-carousel mb-5" data-aos="fade-up" data-aos-delay="200">
               <div class="slider-item">
-                <img src="img/slider-1.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanTunkuAnum/dewanTunkuAnumSlider1.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-2.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanTunkuAnum/dewanTunkuAnumSlider2.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-3.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanTunkuAnum/dewanTunkuAnumSlider3.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-4.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanTunkuAnum/dewanTunkuAnumSlider4.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-5.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanTunkuAnum/dewanTunkuAnumSlider5.jpg" alt="Image placeholder" class="img-fluid">
               </div>
               <div class="slider-item">
-                <img src="img/slider-6.jpg" alt="Image placeholder" class="img-fluid">
+                <img src="gambarDewan/dewanTunkuAnum/dewanTunkuAnumSlider6.jpg" alt="Image placeholder" class="img-fluid">
               </div>
             </div>
             <!-- END slider -->
