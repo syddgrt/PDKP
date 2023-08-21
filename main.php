@@ -212,7 +212,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
         </div>
         <div class="row">
           <div class="col-lg-4 col-md-6 visit mb-3" data-aos="fade-right">
-            <a href="DewanTunkuAnum.php"><img src="img/img_5.jpg" alt="Image placeholder" class="img-fluid"> </a>
+            <a href="DewanTunkuAnum.php"><img src="gambarDewan/gambarFront/dewanTunkuAnumFront.jpg" alt="Image placeholder" class="img-fluid"> </a>
             <h3><a href="DewanTunkuAnum.php">Dewan Tunku Anum</a></h3>
             
             <span class="reviews-count">
@@ -226,7 +226,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             </span>
           </div>
           <div class="col-lg-4  col-md-6 visit mb-3" data-aos="fade-right" data-aos-delay="100">
-            <a href="DewanSerbaguna.php"><img src="img/img_5.jpg" alt="Image placeholder" class="img-fluid image-pop"> </a>
+            <a href="DewanSerbaguna.php"><img src="gambarDewan/gambarFront/dewanSerbagunaFront.jpg" alt="Image placeholder" class="img-fluid image-pop"> </a>
             <h3><a href="DewanSerbaguna.php">Dewan Serbaguna</a></h3>
             
             <span class="reviews-count">
@@ -238,7 +238,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             </span>
           </div>
           <div class="col-lg-4  col-md-6 visit mb-3" data-aos="fade-right" data-aos-delay="200">
-            <a href="DewanKodiang.php"><img src="img/img_5.jpg" alt="Image placeholder" class="img-fluid"> </a>
+            <a href="DewanKodiang.php"><img src="gambarDewan/gambarFront/dewanKodiangFront.jpg" alt="Image placeholder" class="img-fluid"> </a>
             <h3><a href="DewanKodiang.php">Dewan Kodiang</a></h3>
             
             <span class="reviews-count">
@@ -250,7 +250,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             </span>
           </div>
           <div class="col-lg-4 col-md-6 visit mb-3" data-aos="fade-right" data-aos-delay="300">
-            <a href="BilikGerakan.php"><img src="img/img_5.jpg" alt="Image placeholder" class="img-fluid"> </a>
+            <a href="BilikGerakan.php"><img src="gambarDewan/gambarFront/bilikGerakanFront.jpg" alt="Image placeholder" class="img-fluid"> </a>
             <h3><a href="BilikGerakan.php">Bilik Gerakan</a></h3>
             
             <span class="reviews-count">
@@ -262,7 +262,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             </span>
           </div>
           <div class="col-lg-4 col-md-6 visit mb-3" data-aos="fade-right">
-            <a href="BilikMesyuaratPembangunan.php"><img src="img/img_5.jpg" alt="Image placeholder" class="img-fluid"> </a>
+            <a href="BilikMesyuaratPembangunan.php"><img src="gambarDewan/gambarFront/bilikMesyuaratPembangunanFront.jpg" alt="Image placeholder" class="img-fluid"> </a>
             <h3><a href="BilikMesyuaratPembangunan.php">Bilik Mesyuarat Pembangunan</a></h3>
             
             <span class="reviews-count">          
@@ -274,7 +274,7 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             </span>
           </div>
           <div class="col-lg-4 col-md-6 visit mb-3" data-aos="fade-right">
-            <a href="BilikNGO.php"><img src="img/img_5.jpg" alt="Image placeholder" class="img-fluid"> </a>
+            <a href="BilikNGO.php"><img src="gambarDewan/gambarFront/bilikNGOFront.jpg" alt="Image placeholder" class="img-fluid"> </a>
             <h3><a href="BilikNGO.php">Bilik NGO</a></h3>
            
             <span class="reviews-count">
