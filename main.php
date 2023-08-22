@@ -118,6 +118,13 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
             <input type="text" name="phone_number" id="phone_number">
           </div>
 
+          
+          <div class="form-group">
+            <label for="organization">Agensi/Jabatan/Persendirian*:</label>
+            <input type="text" name="organization" id="organization" required>
+            </div>
+
+
           <div class="form-group">
             <label for="notes">Tujuan:</label>
             <input type="text" name="notes" id="notes">

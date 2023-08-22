@@ -23,7 +23,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     } else {
         // Authentication failed, display an error message or redirect back to the login page with an error message
         // For example, you can use the following code to redirect back to the login page:
+        echo '<script>alert("Wrong password. Please try again.");</script>';
+    
         header("Location: main.php?error=1");
+
         exit;
     }
 }
