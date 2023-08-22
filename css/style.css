@@ -30,7 +30,7 @@ a:hover {
 
 h1, h2, h3, h4, h5 {
   color: #000;
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
 }
 
 .container-fluid {
@@ -89,7 +89,7 @@ textarea.form-control {
   color: #fff;
   font-weight: bold;
   line-height: 1;
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
 }
 
 .site-navbar {
@@ -109,7 +109,7 @@ textarea.form-control {
 }
 
 .site-navbar nav .menu {
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
 }
 
 .site-navbar nav .menu li a {
@@ -202,7 +202,7 @@ textarea.form-control {
 
 .site-hero-inner .heading {
   font-size: 80px;
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
   color: #fff;
   line-height: 1;
   font-weight: bold;
@@ -317,7 +317,8 @@ textarea.form-control {
 
 .section {
   padding: 7em 0;
-  background-color: #EDEADB;
+  /* background-color: #EDEADB; */
+  background-image: url("img/img_1.jpg");
 }
 
 @media (max-width: 991.98px) {
@@ -383,7 +384,7 @@ textarea.form-control {
 
 .heading-serif, .testimonial-section .heading, .slider-section .heading, .blog-post-entry .heading {
   font-size: 80px;
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
 }
 
 @media (max-width: 991.98px) {
@@ -461,7 +462,7 @@ textarea.form-control {
 
 .testimonial blockquote p {
   line-height: 1.5;
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
   font-size: 20px;
   color: #000;
   font-style: italic;
@@ -886,7 +887,7 @@ textarea.form-control {
 
 .contact-section .contact-info p {
   color: white;
-  font-family: "Playfair+Display", times, serif;
+  font-family: "Mukta Mahee", times, serif;
   font-size: 30px;
   margin-bottom: 30px;
 }
