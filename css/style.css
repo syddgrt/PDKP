@@ -3,8 +3,8 @@ body {
   font-family: "Mukta Mahee", arial, sans-serif;
   font-weight: 200;
   font-size: 16px;
-  line-height: 1.8;
-  color: #6c757d;
+  /* line-height: 1.8; */
+  color: #000000;
 }
 
 ::-moz-selection {
@@ -15,6 +15,15 @@ body {
 ::selection {
   color: #fff;
   background: #e61c5d;
+}
+
+textarea {
+  width: 100%; /* Make the textarea span the width of its container */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing */
 }
 
 a {

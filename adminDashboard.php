@@ -25,11 +25,10 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
         <meta name="description" content="" />
         <meta name="author" content="" />
         <title>PDKP - Admin Dashboard</title>
-        <!-- <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" /> -->
+
+        <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
         <link href="css/admindb.css" rel="stylesheet" />
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
-
-    
 
         <!-- Include jQuery -->
         <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -38,12 +37,21 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
         <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.min.js"></script>
 
         <link rel="stylesheet" href="//code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
-        <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+
 
 
         <link rel="stylesheet" href="index.css">
 	    <script src="script.js"></script>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+        <!-- <script src="js/scripts.js"></script> -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
+        <!-- <script src="assets/demo/chart-area-demo.js"></script>
+        <script src="assets/demo/chart-bar-demo.js"></script> -->
+        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
+        <script src="js/datatables-simple-demo.js"></script>
+
+        
         
 
 
@@ -140,10 +148,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                             </a> -->
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
-                        <div class="small">Logged in as:</div>
-                        Start Bootstrap
-                    </div>
+                
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -386,31 +391,32 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
     <div class="modal-content">
       <span class="close" onclick="hideBookingModal()">&times;</span>
       <h2>Borang Tempahan</h2>
-      <center>
+      
       <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
           <p>
-            <label for="Name">Nama*:</label>
+            <label for="Name">Nama</label>
             <input type="text" name="name" id="name" required>
           </p>
 
           <p>
-            <label for="phoneNumber">Nombor Telefon*:</label>
+            <label for="phoneNumber">Nombor Telefon</label>
             <input type="text" name="phone_number" id="phone_number" required>
           </p>
 
           <p>
-            <label for="organization">Agensi/Jabatan/Persendirian*:</label>
+            <label for="organization">Agensi/Jabatan/Persendirian</label>
             <input type="text" name="organization" id="organization" required>
           </p>
 
           <p>
-            <label for="notes">Tujuan*:</label>
-            <input type="text" name="notes" id="notes" required>
+            <label for="notes">Tujuan</label>
+            <!-- <input type="text" name="notes" id="notes" required> -->
+            <br><textarea id="notes" name="notes" rows="2" cols="50"></textarea>
           </p>
 
           <p>
-              <label for="type">Bilik/Dewan*:</label>
+              <label for="type">Bilik/Dewan</label>
               <select name="type" id="type" required>
                 <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
                 <option value="Dewan Serbaguna">Dewan Serbaguna</option>
@@ -424,38 +430,38 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
 
           <p>
-            <label for="booking_date">Tarikh Tempahan*:</label>
+            <label for="booking_date">Tarikh Tempahan</label>
             <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>" required>
           </p>
 
           <p>
-          <label for="time_start">Masa Mula*:</label>
+          <label for="time_start">Masa Mula</label>
           <input type="time" name="time_start" id="time_start" required>
         </p>
 
         <p>
-          <label for="time_end">Masa Tamat*:</label>
+          <label for="time_end">Masa Tamat</label>
           <input type="time" name="time_end" id="time_end" required>
         </p>
 
         <p>
 
-        <label for="upload">&nbsp;&nbsp;&nbsp;Dokumen Sokongan:</label>
+        <label for="upload">Dokumen Sokongan(Optional)</label>
         <input type="file" name="upload" id="upload">
         </p>
 
 
         <input type="submit" value="Submit">
         </form>     
-	    </center>
+	
     </div>
   </div>
 
 
 	<!-- Edit Booking Modal -->
 	<div id="edit-booking-modal" class="modal" style="display: none;">
-	<div class="modal-content-admin">
-		<span class="close" onclick="closeEditBookingModal()">&times;</span>
+	<div class="modal-content">
+		<span class ="close" onclick="closeEditBookingModal()">&times;</span>
 		<h2>Kemaskini tempahan</h2>
 		<form onsubmit="submitEditBookingForm(); return false;">
             <!-- Hidden input to store the booking ID for submission -->
@@ -525,12 +531,22 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
 
 
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-        <!-- <script src="js/scripts.js"></script> -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.8.0/Chart.min.js" crossorigin="anonymous"></script>
-        <!-- <script src="assets/demo/chart-area-demo.js"></script>
-        <script src="assets/demo/chart-bar-demo.js"></script> -->
-        <script src="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/umd/simple-datatables.min.js" crossorigin="anonymous"></script>
-        <script src="js/datatables-simple-demo.js"></script>
+        
+
+        <script>
+            $(document).ready(function() {
+                $('#datatablesSimple').DataTable({
+                    "paging": true,
+                    "ordering": true,
+                    "searching": true, // Enable searching/filtering
+                    "order": [], // Disable initial sorting
+                    "language": {
+                        "search": "Cari:", // Change the search placeholder text
+                        "searchPlaceholder": "Cari dalam jadual...",
+                    }
+                });
+            });
+        </script>
+
     </body>
 </html>

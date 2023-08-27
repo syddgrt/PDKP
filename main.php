@@ -105,33 +105,33 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
     <div class="modal-content">
       <span class="close" onclick="hideBookingModal()">&times;</span>
       <h2>Borang Tempahan</h2>
-      <center>
+      
       <form action="insert.php" method="post" onsubmit="submitBookingForm(event)" enctype="multipart/form-data"> <!-- Updated action attribute -->
           
           <div class="form-group">
-            <label for="Name">Nama:</label>
+            <label for="Name">Nama</label>
             <input type="text" name="name" id="name">
           </div>
 
           <div class="form-group">
-            <label for="phoneNumber">Nombor Telefon:</label>
+            <label for="phoneNumber">Nombor Telefon</label>
             <input type="text" name="phone_number" id="phone_number">
           </div>
 
           
           <div class="form-group">
-            <label for="organization">Agensi/Jabatan/Persendirian*:</label>
+            <label for="organization">Agensi/Jabatan/Persendirian*</label>
             <input type="text" name="organization" id="organization" required>
             </div>
 
 
           <div class="form-group">
-            <label for="notes">Tujuan:</label>
-            <input type="text" name="notes" id="notes">
+            <label for="notes">Tujuan</label>
+            <br><textarea id="notes" name="notes" rows="2" cols="50"></textarea>
             </div>
 
           <div class="form-group">
-            <label for="type">Bilik/Dewan:</label>
+            <label for="type">Bilik/Dewan</label>
             <select name="type" id="type">
               <option value="Dewan Tunku Anum">Dewan Tunku Anum</option>
               <option value="Dewan Serbaguna">Dewan Serbaguna</option>
@@ -145,30 +145,30 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
 
 
           <div class="form-group">
-            <label for="booking_date">Tarikh Tempahan:</label>
+            <label for="booking_date">Tarikh Tempahan</label>
             <input type="date" name="booking_date" id="booking_date" data-booked-dates="<?php echo $bookedDatesJson; ?>">
           </div>
 
           <div class="form-group">
-            <label for="time_start">Masa Mula:</label>
+            <label for="time_start">Masa Mula</label>
             <input type="time" name="time_start" id="time_start">
           </div>
 
           <div class="form-group">
-            <label for="time_end">Masa Tamat:</label>
+            <label for="time_end">Masa Tamat</label>
             <input type="time" name="time_end" id="time_end">
           </div>
 
         <div class="form-group">
 
-          <label for="upload">&nbsp;&nbsp;&nbsp;Dokumen Sokongan:&nbsp;&nbsp;&nbsp;</label>
+          <label for="upload">Dokumen Sokongan</label>
           <input type="file" name="upload" id="upload">
         </div>
 
 
         <input type="submit" value="Submit">
         </form>     
-	    </center>
+	    
     </div>
   </div>
 
@@ -179,12 +179,12 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
       <h2>Admin Login</h2>
       <form action="login.php" method="post"> <!-- Add the form element with action="login.php" -->
         <div class="form-group">
-          <label for="username">Username:</label>
+          <label for="username">Username </label>
           <input type="username" name="username" id="username">
         </div>
 
         <div class="form-group">
-          <label for="password">Password:</label>
+          <label for="password">Password </label>
           <input type="password" name="password" id="password">
         </div>
 
