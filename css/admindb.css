@@ -5335,6 +5335,8 @@ textarea.form-control-lg {
   border: var(--bs-modal-border-width) solid var(--bs-modal-border-color);
   border-radius: var(--bs-modal-border-radius);
   outline: 0;
+  height:85%;
+  
 }
 
 .modal-backdrop {
@@ -5374,6 +5376,15 @@ textarea.form-control-lg {
 .modal-title {
   margin-bottom: 0;
   line-height: var(--bs-modal-title-line-height);
+}
+
+textarea {
+  width: 100%; /* Make the textarea span the width of its container */
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  resize: vertical; /* Allow vertical resizing */
 }
 
 .modal-body {
