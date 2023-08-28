@@ -128,7 +128,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                                         </nav>
                                     </div>
                                 </nav>
-                            </div> --><a class="nav-link" href="login.html">Login</a>
+                            </div> --><a class="nav-link" href="logout.html">Logout</a>
                             <!-- <div class="sb-sidenav-menu-heading">Addons</div>
                             <a class="nav-link" href="charts.html">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
@@ -140,10 +140,10 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                             </a> -->
                         </div>
                     </div>
-                    <div class="sb-sidenav-footer">
+                    <!-- <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         Start Bootstrap
-                    </div>
+                    </div> -->
                 </nav>
             </div>
             <div id="layoutSidenav_content">
