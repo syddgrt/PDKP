@@ -15,6 +15,9 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
 <!doctype html>
 <html lang="en">
   <head>
+
+  
+
     <title>Sistem Tempahan Dewan PDKP</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -195,9 +198,17 @@ if (isset($_GET['logout']) && $_GET['logout'] === 'success') {
 
 
     <section class="site-hero overlay" style="background-image: url(gambarDewan/gambarKompleks.jpg)">
+    
       <div class="container">
+        
         <div class="row site-hero-inner justify-content-center align-items-center">
+          
           <div class="col-md-10 text-center">
+          <div class="image-container">
+      <!-- First image: Logo of the app -->
+      <img src="img/JataKedah.png" alt="App Logo">
+
+  </div>
             <h1 class="heading" data-aos="fade-up">Sistem Tempahan Dewan PDKP</h1>
             <p class="sub-heading mb-5" data-aos="fade-up" data-aos-delay="100">Kompleks Pentadbiran Kubang Pasu</p>
             <a href="#" class="btn uppercase btn-primary mr-md-2 mr-0 mb-3 d-sm-inline d-block" onclick="showBookingForm()">Tempahan</a>

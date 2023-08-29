@@ -123,8 +123,8 @@ textarea.form-control {
 
 .site-navbar nav .menu li a {
   color: #000;
-  font-size: 40px;
-  padding: 5px 10px;
+  font-size: 30px;
+  /* padding: 5px 10px; */
   position: relative;
 }
 
@@ -326,8 +326,12 @@ textarea.form-control {
 
 .section {
   padding: 7em 0;
-  /* background-color: #EDEADB; */
-  background-image: url("img/img_1.jpg");
+  background-color: #EDEADB;
+  background-image: url("img/62540.png"); /* Make sure the path is correct */
+  background-size: cover; /* Adjust to your preference */
+  background-repeat: no-repeat; /* Prevent image repetition */
+  background-position: center center; /* Center the image */
+  /* min-height: 400px; Set a minimum height for the section */
 }
 
 @media (max-width: 991.98px) {

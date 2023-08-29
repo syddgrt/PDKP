@@ -59,7 +59,7 @@ body {
     max-width: 600px;
     padding: 20px;
     background-color: #fefefe;
-    margin-top:-40px
+    margin-top:-80px
     
   }
 
@@ -290,6 +290,18 @@ body {
 
 .image-pop:hover {
   transform: scale(1.1); /* Increase the image size by 10% when hovered */
+}
+
+.image-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+}
+
+/* Style for the images */
+.image-container img {
+  max-width: 120px; /* Adjust the image size as needed */
 }
   
 

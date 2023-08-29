@@ -3,6 +3,7 @@
 <head>
     <title>Tempahan</title>
     <script src="script.js"></script> 
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <style>
         table {
             width: 100%;
@@ -14,6 +15,57 @@
             border: 1px solid black;
             padding: 8px;
         }
+
+        .modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 110%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0.8);
+  }
+  
+  .modal-content {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fefefe;
+    margin-top:-80px
+    
+  }
+
+  .modal-content-admin {
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 600px;
+    padding: 20px;
+    background-color: #fefefe;
+    margin-top: -30px;
+  }
+  
+  .modal-content img {
+    width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+
+  .form-group {
+    margin-bottom: 20px;
+    /* border: 1px solid #ccc;
+    border-radius: 4px; */
+  }
     </style>
 </head>
 <body>
@@ -60,7 +112,7 @@
     
                 echo "<tr>";
                 //echo "<td>" . $row['name'] . "</td>";
-                //echo "<td>" . $row['phone_number'] . "</td>";
+                echo "<td>" . $row['phone_number'] . "</td>";
                 echo "<td>" . $row['notes'] . "</td>";
                 echo "<td>" . $row['organization'] . "</td>";
                 echo "<td>" . $row['type'] . "</td>";
@@ -135,8 +187,18 @@
         ?>
     </table>
 
+    <div id="printModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closePrintModal()">&times;</span>
+            <label for="phoneInput">Enter Phone Number:</label>
+            <input type="text" id="phoneInput">
+            <button onclick="printBookingByPhoneNumber()">Print Booking</button>
+        </div>
+    </div>
+
     <!-- Back to Main Page button -->
     <button onclick="goBack()">Back</button>
+    <button onclick="openPrintModal()">Print</button>
 
 </body>
 </html>

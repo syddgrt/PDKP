@@ -27,7 +27,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
         <title>PDKP - Admin Dashboard</title>
 
         <link href="https://cdn.jsdelivr.net/npm/simple-datatables@7.1.2/dist/style.min.css" rel="stylesheet" />
-        <link href="css/admindb.css" rel="stylesheet" />
+        
         <script src="https://use.fontawesome.com/releases/v6.3.0/js/all.js" crossorigin="anonymous"></script>
 
         <!-- Include jQuery -->
@@ -41,6 +41,8 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
 
         <link rel="stylesheet" href="index.css">
+        <link href="css/admindb.css" rel="stylesheet" />
+        
 	    <script src="script.js"></script>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
@@ -148,14 +150,10 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                             </a> -->
                         </div>
                     </div>
-<<<<<<< HEAD
                     <!-- <div class="sb-sidenav-footer">
                         <div class="small">Logged in as:</div>
                         Start Bootstrap
                     </div> -->
-=======
-                
->>>>>>> a9e7392b25f5b80e4838f65a78568c5f28e79932
                 </nav>
             </div>
             <div id="layoutSidenav_content">
@@ -275,100 +273,106 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
                         <div class="card mb-4">
                             <div class="card-header">
                                 <i class="fas fa-table me-1"></i>
-                                DataTable Example
+                                Senarai Tempahan
                             </div>
                             <div class="card-body">
                             <div class="card-body">
     <table id="datatablesSimple">
-        <tr>
-            <th><strong>ID</strong></th>
-            <th><strong>Nama</strong></th>
-            <th><strong>Nombor Telefon</strong></th>
-            <th><strong>Agensi/Jabatan</strong></th>
-            <th><strong>Tujuan</strong></th>
-            <th><strong>Bilik/Dewan</strong></th>
-            <th><strong>Tarikh Tempahan</strong></th>
-            <th><strong>Masa Mula</strong></th>
-            <th><strong>Masa Tamat</strong></th>
-            <th><strong>Dokumen Sokongan</strong></th>
-            <th><strong>Status</strong></th>
-            <th><strong>Tindakan</strong></th>
-        </tr>
-        <?php
-        // servername => localhost
-        // username => root
-        // password => empty
-        // database name => staff
-        $conn = mysqli_connect("localhost", "root", "", "staff");
+        <thead>
+            <tr>
+                <th><strong>ID</strong></th>
+                <th><strong>Nama</strong></th>
+                <th><strong>Nombor Telefon</strong></th>
+                <th><strong>Agensi/Jabatan</strong></th>
+                <th><strong>Tujuan</strong></th>
+                <th><strong>Bilik/Dewan</strong></th>
+                <th><strong>Tarikh Tempahan</strong></th>
+                <th><strong>Masa Mula</strong></th>
+                <th><strong>Masa Tamat</strong></th>
+                <th><strong>Dokumen Sokongan</strong></th>
+                <th><strong>Status</strong></th>
+                <th><strong>Tindakan</strong></th>
+            </tr>
+        </thead>
 
-        // Check connection
-        if ($conn === false) {
-            die("ERROR: Could not connect. " . mysqli_connect_error());
-        }
+                
+        <tbody>
+            <?php
+            // servername => localhost
+            // username => root
+            // password => empty
+            // database name => staff
+            $conn = mysqli_connect("localhost", "root", "", "staff");
 
-        // Fetch all bookings from the database
-        $sql = "SELECT * FROM test2";
-        $result = mysqli_query($conn, $sql);
+            // Check connection
+            if ($conn === false) {
+                die("ERROR: Could not connect. " . mysqli_connect_error());
+            }
 
-        if ($result === false) {
-            die("ERROR: Query failed. " . mysqli_error($conn));
-        }
+            // Fetch all bookings from the database
+            $sql = "SELECT * FROM test2";
+            $result = mysqli_query($conn, $sql);
 
-        // Loop through the results and display them in the table
-        while ($row = mysqli_fetch_assoc($result)) {
-            
-            $status = $row['status'];
-            $rowClass = $status === 'Approved' ? 'approved-row' : ($status === 'Rejected' ? 'rejected-row' : '');
+            if ($result === false) {
+                die("ERROR: Query failed. " . mysqli_error($conn));
+            }
 
-            // // Add the data-id attribute to each row
-            echo "<tr data-id='" . $row['id'] . "' class='$rowClass'>";
-            
+            // Loop through the results and display them in the table
+            while ($row = mysqli_fetch_assoc($result)) {
+                
+                $status = $row['status'];
+                $rowClass = $status === 'Approved' ? 'approved-row' : ($status === 'Rejected' ? 'rejected-row' : '');
+
+                // // Add the data-id attribute to each row
+                echo "<tr data-id='" . $row['id'] . "' class='$rowClass'>";
+                
 
 
-            // Rest of the code remains the same...
-            
-            
-            echo "<td>" . $row['id'] . "</td>";
-            echo "<td>" . $row['name'] . "</td>";
-            echo "<td>" . $row['phone_number'] . "</td>";
-            echo "<td>" . $row['organization'] . "</td>";
-            echo "<td>" . $row['notes'] . "</td>";
-            
-            echo "<td>" . $row['type'] . "</td>";
-            echo "<td>" . date('d-m-Y', strtotime($row['booking_date'])) . "</td>";
+                // Rest of the code remains the same...
+                
+                
+                echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['name'] . "</td>";
+                echo "<td>" . $row['phone_number'] . "</td>";
+                echo "<td>" . $row['organization'] . "</td>";
+                echo "<td>" . $row['notes'] . "</td>";
+                
+                echo "<td>" . $row['type'] . "</td>";
+                echo "<td>" . date('d-m-Y', strtotime($row['booking_date'])) . "</td>";
 
-            // Convert time_start to 12-hour format
-            $time_start_24h = $row['time_start'];
-            $time_start_12h = date("h:i A", strtotime($time_start_24h));
+                // Convert time_start to 12-hour format
+                $time_start_24h = $row['time_start'];
+                $time_start_12h = date("h:i A", strtotime($time_start_24h));
 
-            // Display the booking time in 12-hour format
-            echo "<td>" . $time_start_12h . "</td>";
+                // Display the booking time in 12-hour format
+                echo "<td>" . $time_start_12h . "</td>";
 
-            // Convert time_start to 12-hour format
-            $time_end_24h = $row['time_end'];
-            $time_end_12h = date("h:i A", strtotime($time_end_24h));
+                // Convert time_start to 12-hour format
+                $time_end_24h = $row['time_end'];
+                $time_end_12h = date("h:i A", strtotime($time_end_24h));
 
-            // Display the booking time in 12-hour format
-            echo "<td>" . $time_end_12h . "</td>";
+                // Display the booking time in 12-hour format
+                echo "<td>" . $time_end_12h . "</td>";
 
-            echo "<td>" . $row['id'] . "</td>";
+                echo "<td>" . $row['id'] . "</td>";
 
-            echo "<td class='status-cell'>" . $row['status'] . "</td>";
+                echo "<td class='status-cell'>" . $row['status'] . "</td>";
 
-            echo "<td>";
-            echo "<button onclick=\"openEditBookingModal(" . $row['id'] . ")\">Edit</button>";
-            echo "<form action='adminDashboard.php' method='post' style='display: inline;' onsubmit=\"return false;\">";
-            echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "'>";
-            echo "<button onclick=\"deleteBooking(" . $row['id'] . ")\">Delete</button>";
-            // echo "<button onclick=\"approveBooking(this, " . $row['id'] . ")\">Approve</button>";
-            echo "</form>";
-            echo "</td>";
-            echo "</tr>";
-        }
+                echo "<td>";
+                echo "<button onclick=\"openEditBookingModal(" . $row['id'] . ")\">Edit</button>";
+                echo "<form action='adminDashboard.php' method='post' style='display: inline;' onsubmit=\"return false;\">";
+                echo "<input type='hidden' name='delete_id' value='" . $row['id'] . "'>";
+                echo "<button onclick=\"deleteBooking(" . $row['id'] . ")\">Delete</button>";
+                // echo "<button onclick=\"approveBooking(this, " . $row['id'] . ")\">Approve</button>";
+                echo "</form>";
+                echo "</td>";
+                echo "</tr>";
+            }
 
-        // Don't forget to close the database connection
-        mysqli_close($conn);
-        ?>
+            // Don't forget to close the database connection
+            mysqli_close($conn);
+            ?>
+        </tbody>
     </table>
 </div>
 
@@ -542,16 +546,7 @@ if (!isset($_SESSION["admin"]) || $_SESSION["admin"] !== true) {
 
         <script>
             $(document).ready(function() {
-                $('#datatablesSimple').DataTable({
-                    "paging": true,
-                    "ordering": true,
-                    "searching": true, // Enable searching/filtering
-                    "order": [], // Disable initial sorting
-                    "language": {
-                        "search": "Cari:", // Change the search placeholder text
-                        "searchPlaceholder": "Cari dalam jadual...",
-                    }
-                });
+                $('#datatablesSimple').DataTable();
             });
         </script>
 

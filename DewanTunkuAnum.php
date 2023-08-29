@@ -229,11 +229,10 @@
           <h2>Hubungi Kami</h2>
           <h4>04-702 8383 </h4>
           <h5>(Pejabat Daerah Kubang Pasu)</h5>
-          <h5>04-702 8383</h4>
+          <h4>04-702 8383</h4>
           <h5>(Pejabat Tanah Kubang Pasu)</h5>
           <h4><a href="https://m.facebook.com/profile.php?id=588641034679651">Facebook</a></h4>
-          <p>Facebook PDKP</p>
-          
+          <h5>(Facebook PDKP)</h5>
           
           
         </div>

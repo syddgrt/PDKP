@@ -563,6 +563,60 @@ function highlightApprovedRows() {
   });
 }
 
+function openPrintModal() {
+  document.getElementById("printModal").style.display = "block";
+}
+
+// Function to close the print modal
+function closePrintModal() {
+  document.getElementById("printModal").style.display = "none";
+}
+
+function printBookingByPhoneNumber() {
+  var phoneNumber = document.getElementById("phoneInput").value;
+  if (phoneNumber.trim() === "") {
+      alert("Please enter a phone number.");
+      return;
+  }
+
+  // Fetch booking data by phone number using AJAX
+  $.ajax({
+    url: 'fetchBookingDetailsByPhone.php',
+    method: 'POST',
+    data: { phone: phoneNumber },
+    dataType: 'json', // Set the expected data type to JSON
+    success: function(response) {
+        var bookings = response.bookings;
+
+        if (bookings.length > 0) {
+            // Create an HTML string for displaying booking details
+            var html = "<h2>Booking Details</h2>";
+            for (var i = 0; i < bookings.length; i++) {
+                var bookingData = bookings[i];
+                html += "<p>Name: " + bookingData.name + "</p>";
+                html += "<p>Phone Number: " + bookingData.phone_number + "</p>";
+                // Add more details as needed...
+            }
+
+            // Open a new window or iframe for printing
+            var printWindow = window.open('', '_blank');
+            printWindow.document.write(html);
+            printWindow.document.close();
+            printWindow.print();
+        } else {
+            alert('No bookings found for the phone number.');
+        }
+    },
+    error: function() {
+        alert('Error fetching booking data.');
+    }
+});
+
+closePrintModal();
+}
+
+
+
 // Call the function when the page loads
 window.addEventListener('load', highlightApprovedRows);
 
