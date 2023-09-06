@@ -1,4 +1,7 @@
 <?php
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 // servername => localhost
 // username => root
 // password => empty
@@ -23,14 +26,12 @@ if (isset($_POST['phone'])) {
         // Check if any bookings are found
         if (mysqli_num_rows($result) > 0) {
             // Return the booking details as JSON
+            header('Content-Type: application/json'); // Corrected content type
             $bookings = array();
             while ($row = mysqli_fetch_assoc($result)) {
                 $bookings[] = $row;
             }
-        
-            // Set the Content-Type header to indicate JSON response
-            header('Content-Type: application/json');
-            echo json_encode(array("bookings" => $bookings)); // Wrap the array in an object
+            echo json_encode(array("bookings" => $bookings));
         } else {
             // No bookings found for the phone number
             http_response_code(404);
@@ -42,6 +43,7 @@ if (isset($_POST['phone'])) {
         echo json_encode(array("error" => "Error fetching booking details"));
     }
 
-// Close the database connection
-mysqli_close($conn);
+    // Close the database connection
+    mysqli_close($conn);
+}
 ?>

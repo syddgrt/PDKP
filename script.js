@@ -574,18 +574,22 @@ function closePrintModal() {
 
 function printBookingByPhoneNumber() {
   var phoneNumber = document.getElementById("phoneInput").value;
+  console.log('Phone number:', phoneNumber); // Add this line for debugging
+  // var phoneNumber = document.getElementById("phoneInput").value;
   if (phoneNumber.trim() === "") {
       alert("Please enter a phone number.");
       return;
   }
 
   // Fetch booking data by phone number using AJAX
+  console.log('Before AJAX request');
   $.ajax({
     url: 'fetchBookingDetailsByPhone.php',
     method: 'POST',
     data: { phone: phoneNumber },
     dataType: 'json', // Set the expected data type to JSON
     success: function(response) {
+      console.log('AJAX request successful');
         var bookings = response.bookings;
 
         if (bookings.length > 0) {
@@ -593,8 +597,12 @@ function printBookingByPhoneNumber() {
             var html = "<h2>Booking Details</h2>";
             for (var i = 0; i < bookings.length; i++) {
                 var bookingData = bookings[i];
-                html += "<p>Name: " + bookingData.name + "</p>";
-                html += "<p>Phone Number: " + bookingData.phone_number + "</p>";
+                html += "<p>Nama: " + bookingData.name + "</p>";
+                html += "<p>Nombor Telefon: " + bookingData.phone_number + "</p>";
+                html += "<p>Tujuan Mesyuarat: " + bookingData.notes + "</p>";
+                html += "<p>Dewan/Bilik: " + bookingData.type + "</p>";
+                html += "<p>Tujuan Mesyuarat: " + bookingData.phone_number + "</p>";
+                html += "<p>Tujuan Mesyuarat: " + bookingData.phone_number + "</p>";
                 // Add more details as needed...
             }
 
@@ -607,11 +615,15 @@ function printBookingByPhoneNumber() {
             alert('No bookings found for the phone number.');
         }
     },
-    error: function() {
-        alert('Error fetching booking data.');
+    
+    error: function(jqXHR, textStatus, errorThrown) {
+      console.log('AJAX request failed with error: ' + textStatus, errorThrown);
+      alert('No bookings found for the phone number.');
+
     }
 });
 
+console.log('After AJAX request');
 closePrintModal();
 }
 

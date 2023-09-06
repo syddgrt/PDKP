@@ -75,7 +75,7 @@
             <center>
                 <!-- <th>Nama</th>
                 <th>Nombor Telefon</th> -->
-                <th>Tujuan</th>
+                <th>Telefon</th>
                 <th>Jabatan/Agensi</th>
                 <th>Bilik/Dewan</th>
                 <th>Tarikh Tempahan</th>
@@ -192,9 +192,13 @@
             <span class="close" onclick="closePrintModal()">&times;</span>
             <label for="phoneInput">Enter Phone Number:</label>
             <input type="text" id="phoneInput">
+        
             <button onclick="printBookingByPhoneNumber()">Print Booking</button>
+            
+            
         </div>
     </div>
+    
 
     <!-- Back to Main Page button -->
     <button onclick="goBack()">Back</button>
